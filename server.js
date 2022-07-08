@@ -6,24 +6,31 @@ const express = require('express')
 const mongoose = require("mongoose")
 const methodOverride = require('method-override')
 const session = require('express-session')
-require('dotenv').config()
+const mongoDBSession = require('connect-mongodb-session')
 
 //Configuration
 PORT = process.env.PORT
 const app = express()
 const dbURL = process.env.MONGODB_URL
-// const MongoDBStore = mongoDBSession(session)
-// const sessionStore = new MongoDBStore({
-//   uri: dbURL,
-//   collection: 'sessions'
-// })
+const MongoDBStore = mongoDBSession(session)
+const sessionStore = new MongoDBStore({
+  uri: dbURL,
+  collection: 'sessions'
+})
 
-//Router
+//Routers
 const usersRouter = require('./src/routes/users.router')
 const sessionsRouter = require('./src/routes/sessions.router')
 
 //Middleware
-
+app.use(session({
+  store: sessionStore,
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  }
+}))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
