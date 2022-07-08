@@ -1,8 +1,10 @@
-//NPM package dependancies
+//Dependancies
 const express = require('express')
 const users = express.Router()
 const usersController = require('../controllers/users.controller')
+const helper = require('../utils/helper')
 
+users.use(helper.isLoggedIn)
 
 /*================================================================
 /Users Routes

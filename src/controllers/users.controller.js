@@ -15,14 +15,24 @@ const getUsersJSON = (req,res) => {
 const getUsers = (req,res) => {
   Users.find()
     .then((users) => {
-      res.render('users/indexUsers.ejs', {users, baseURL})
+      res.render('users/indexUsers.ejs', 
+      {
+        users, 
+        baseURL,
+        currentUser: req.session.currentUser
+      })
     })
 }
 
 const showUser = (req,res) => {
   Users.findById(req.params.id)
     .then((user) => {
-      res.render('users/showUser.ejs', {user, baseURL})
+      res.render('users/showUser.ejs', 
+      {
+        user, 
+        baseURL,
+        currentUser: req.session.currentUser
+      })
     })
 }
 
@@ -30,14 +40,16 @@ const showUser = (req,res) => {
 CREATE USERS
 ================================================*/
 const newUserForm = (req, res) => {
-  res.render('users/newUser.ejs', {baseURL})
+  res.render('users/newUser.ejs', 
+  {
+    baseURL,
+    currentUser: req.session.currentUser
+  })
 }
 
 const newUser = (req, res) => {
-  console.log(req.body)
   Users.create(req.body)
     .then((newUser) => {
-      console.log(`${newUser.username} has been created`)
       res.redirect(baseURL)
     })
 }
@@ -48,7 +60,12 @@ EDIT USER
 const editUserForm = (req, res) => {
   Users.findById(req.params.id)
     .then((user) => {
-      res.render(('users/editUser.ejs'), {user, baseURL})
+      res.render(('users/editUser.ejs'), 
+      {
+        user, 
+        baseURL,
+        currentUser: req.session.currentUser
+      })
     })
 }
 
