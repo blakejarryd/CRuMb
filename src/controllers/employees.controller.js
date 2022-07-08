@@ -7,8 +7,8 @@ GET Employees
 ================================================*/
 const getEmployeesJSON = (req,res) => {
   Employees.find()
-    .then((employee) => {
-      res.send(employee)
+    .then((employees) => {
+      res.send(employees)
     })
 }
 
@@ -40,7 +40,7 @@ const showEmployee = (req,res) => {
 CREATE EMPLOYEE
 ================================================*/
 const newEmployeeForm = (req, res) => {
-  res.render('employees/newEmploye.ejs', 
+  res.render('employees/newEmployee.ejs', 
   {
     baseURL,
     currentEmployee: req.session.currentEmployee

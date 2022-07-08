@@ -1,0 +1,13 @@
+<%- include ('../partials/header.ejs') %>
+<h1>Update Customer Details</h1>
+<div class = 'update-customer-details'>
+  <form action = "<%= baseURL %>/<%= customer.id %>?_method=PUT" method="POST">
+    <input type = "text" name = 'name' value = "<%= customer.name %>" /> 
+    <input type = "text" name = 'phone' value = "<%= customer.phone %>" /> 
+    <input type = "text" name = 'email' value = "<%= customer.email %>" /> 
+    <input type = "text" name = 'address' value = "<%= customer.address %>" /> 
+    <input type = "text" name = 'phone' value = "<%= customer.contactPerson %>" /> 
+    <input type = "text" name = 'email' value = "<%= customer.relationshipManager %>" /> 
+    <input type="submit" value="Save" />
+  </form>
+</div>
