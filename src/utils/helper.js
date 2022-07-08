@@ -1,5 +1,5 @@
 const isLoggedIn = (req, res, next) => {
-  if (!req.session.currentUser) {
+  if (!req.session.currentEmployee) {
     return res.redirect('/login')
   }
   next()

@@ -1,0 +1,9 @@
+<%- include ('../partials/header.ejs') %>
+<h1>Employees</h1>
+<% for (employee of employees) { %>
+  <a href = "<%= baseURL %>/<%= employee.id %>" >
+    <div class = 'user'>
+      <p> <%= employee.firstName %> <%= employee.lastName %> </p>
+    </div>
+  </a>
+<% } %>

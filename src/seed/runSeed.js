@@ -2,22 +2,23 @@ require('dotenv').config()
 
 const mongoose = require('mongoose')
 
-const Users = require('../models/user.model')
-const seedUsers = require('./seedUsers')
+const Employees = require('../models/employee.model')
+const seedEmployees = require('./seedEmployees')
 
 const dbURL = process.env.MONGODB_URL
 
 //DB Connection
 mongoose.connect(dbURL, () => {
-  console.log('Connected to userManagement db')
-  Users.collection.drop()
+  console.log('Connected to crumb db')
+  Employees.collection.drop()
     .then(() => {
-      console.log('Dropped users collection')
-      console.log('Inserting user seed data')
-      return Users.insertMany(seedUsers)
+      console.log('Dropped employees collection')
+      console.log('Inserting employees seed data')
+      console.log(seedEmployees)
+      return Employees.insertMany(seedEmployees)
     })
     .then(() => {
-      console.log('user seed data inserted')
+      console.log('employees seed data inserted')
       mongoose.connection.close()
     })
 })

@@ -19,7 +19,7 @@ const sessionStore = new MongoDBStore({
 })
 
 //Routers
-const usersRouter = require('./src/routes/users.router')
+const employeesRouter = require('./src/routes/employees.router')
 const sessionsRouter = require('./src/routes/sessions.router')
 
 //Middleware
@@ -34,7 +34,7 @@ app.use(session({
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
-app.use('/users', usersRouter)
+app.use('/employees', employeesRouter)
 app.use('/', sessionsRouter)
 
 //Config
@@ -47,7 +47,7 @@ app.get('/', (req,res) => {
 
 //DB Connection
 mongoose.connect(dbURL, () => {
-  console.log('Connected to userManagement db')
+  console.log('Connected to crumb db')
 })
 
 //Start Server

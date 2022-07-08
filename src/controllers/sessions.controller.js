@@ -1,4 +1,4 @@
-const Users = require('../models/user.model')
+const Users = require('../models/employee.model')
 
 const baseURL = '/login'
 
@@ -11,8 +11,8 @@ const loginForm = (req,res) => {
 
 const login = (req,res) => {
   Users.findOne({username: req.body.username})
-  .then((user) => {
-    if (!user) {
+  .then((employee) => {
+    if (!employee) {
       console.log('username is not found')
       // req.flash('error', 'User not found')
       return res.redirect('/login')
@@ -24,8 +24,8 @@ const login = (req,res) => {
       res.redirect('/login')
     } else {
       // username is found and password matches
-      req.session.currentUser = user
-      res.redirect('/users')
+      req.session.currentEmployee = employee
+      res.redirect('/employees')
     }  
   })
 }
