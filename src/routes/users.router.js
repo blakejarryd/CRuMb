@@ -28,7 +28,7 @@ users.get('/:id/edit', usersController.editUserForm)
 //Edit User Form
 users.put('/:id', usersController.editUser)
 
-
-
+//Delete User
+users.delete('/:id', usersController.deleteUser)
 
 module.exports = users

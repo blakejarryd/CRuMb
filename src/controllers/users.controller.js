@@ -30,7 +30,7 @@ const showUser = (req,res) => {
 CREATE USERS
 ================================================*/
 const newUserForm = (req, res) => {
-  res.render(('users/newUser.ejs'), {baseUrl})
+  res.render('users/newUser.ejs', {baseURL})
 }
 
 const newUser = (req, res) => {
@@ -39,11 +39,11 @@ const newUser = (req, res) => {
     .then((newUser) => {
       console.log(`${newUser.username} has been created`)
       res.redirect(baseURL)
-  })
+    })
 }
 
 /*===============================================
-EDIT USERS
+EDIT USER
 ================================================*/
 const editUserForm = (req, res) => {
   Users.findById(req.params.id)
@@ -57,8 +57,20 @@ const editUser = (req, res) => {
     .then((updatedUser) => {
       console.log(updatedUser)
       res.redirect(baseURL + '/' + req.params.id)
-  })
+    })
 }
+
+/*===============================================
+DELETE USER
+================================================*/
+const deleteUser = (req, res) => {
+  Users.findByIdAndDelete(req.params.id) 
+    .then((deletedUser) => {
+    console.log(deletedUser)
+    res.redirect(baseURL)
+    })
+}
+
 
 module.exports = {
   getUsersJSON,
@@ -68,4 +80,5 @@ module.exports = {
   newUser,
   editUserForm,
   editUser,
+  deleteUser,
 }

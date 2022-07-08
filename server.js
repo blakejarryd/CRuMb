@@ -10,7 +10,7 @@ const dbURL = 'mongodb://localhost:27017/userManagement'
 const PORT = 3000
 
 //Router
-const usersRouter = require('./src/routes/users.route')
+const usersRouter = require('./src/routes/users.router')
 
 //Middleware
 app.use(express.urlencoded({ extended: true }))
