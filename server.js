@@ -31,7 +31,7 @@ app.use(session({
     maxAge: 0.5 * 60 * 60 * 1000
   }
 }))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use('/users', usersRouter)
