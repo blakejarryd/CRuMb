@@ -7,15 +7,15 @@ const sessionsController = require('../controllers/sessions.controller')
 /Login
 ================================================================*/
 //Login Form
-sessions.get('/', sessionsController.loginForm)
+sessions.get('/login', sessionsController.loginForm)
 
 //Login
-sessions.post('/', sessionsController.login)
+sessions.post('/login', sessionsController.login)
 
 /*================================================================
 /Logout
 ================================================================*/
 //Logout
-sessions.delete('/', sessionsController.login)
+sessions.delete('/logout', sessionsController.logout)
 
 module.exports = sessions

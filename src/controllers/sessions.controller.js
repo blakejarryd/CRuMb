@@ -10,13 +10,35 @@ const loginForm = (req,res) => {
 }
 
 const login = (req,res) => {
-  //req.session.currentUser = 'placeholder user'
-  console.log(req.session)
-  res.redirect('/users')
+  Users.findOne({username: req.body.username})
+  .then((user) => {
+    if (!user) {
+      console.log('username is not found')
+      // req.flash('error', 'User not found')
+      return res.redirect('/login')
+    }
+    //const correctPassword = bcrypt.compareSync(req.body.password, user.password)
+    const correctPassword = (req.body.password === 'password')
+    if (!correctPassword) {
+      console.log('incorrect password')
+      res.redirect('/login')
+    } else {
+      // username is found and password matches
+      req.session.currentUser = user
+      res.redirect('/users')
+    }  
+  })
 }
+
+const logout = ((req,res) => {
+  req.session.destroy(() => {
+    res.redirect('/')
+  })
+})
 
 
 module.exports = {
   loginForm,
-  login
+  login,
+  logout,
 }

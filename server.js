@@ -28,14 +28,14 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false,
   cookie: {
-    maxAge: 7 * 24 * 60 * 60 * 1000
+    maxAge: 0.5 * 60 * 60 * 1000
   }
 }))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use('/users', usersRouter)
-app.use('/login', sessionsRouter)
+app.use('/', sessionsRouter)
 
 //Config
 app.set('views', (__dirname + '/src/views'));
