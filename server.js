@@ -20,6 +20,7 @@ const dbURL = process.env.MONGODB_URL
 
 //Router
 const usersRouter = require('./src/routes/users.router')
+const sessionsRouter = require('./src/routes/sessions.router')
 
 //Middleware
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use('/users', usersRouter)
+app.use('/login', sessionsRouter)
 
 //Config
 app.set('views', (__dirname + '/src/views'));
