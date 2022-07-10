@@ -1,6 +1,6 @@
 const Customers = require('../models/customer.model')
 
-const baseURL = '/Customers'
+const baseURL = '/customers'
 
 /*===============================================
 GET Customers

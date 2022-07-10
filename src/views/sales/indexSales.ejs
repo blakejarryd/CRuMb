@@ -1,0 +1,9 @@
+<%- include ('../partials/header.ejs') %>
+<h1>Sales</h1>
+<% for (sale of sales) { %>
+  <a href = "<%= baseURL %>/<%= sale.id %>" >
+    <div class = 'sale'>
+      <p> <%= sale.date %>: <%= sale.customer %> </p>
+    </div>
+  </a>
+<% } %>

@@ -5,7 +5,15 @@ module.exports = [
     email: "stockton@internet.com",
     address: "50/700 Collins Street, Melbourne VIC 3000, ",
     contactPerson: "Lisa Stockton",
-    relationshipManager: "John Smith"
+    relationshipManager: "John Smith",
+    sales: [
+      {
+        date: '01/02/2022',
+        amount: 5000,
+        description: 'big deal',
+        employee: 'John Smith'
+      }
+    ]
   },
   {
     name: "Campbell Brokers",
@@ -13,6 +21,14 @@ module.exports = [
     email: "sales_cambell@internet.com",
     address: "12/120 George Street, Sydney VIC 2000, ",
     contactPerson: "Lisa Stockton",
-    relationshipManager: "John Smith"
+    relationshipManager: "Mary Jane",
+    sales: [
+      {
+        date: '01/02/2022',
+        amount: 5000,
+        description: 'big deal',
+        employee: 'Mary Jane'
+      }
+    ]
   },
 ]

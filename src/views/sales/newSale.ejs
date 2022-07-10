@@ -1,0 +1,15 @@
+<%- include ('../partials/header.ejs') %>
+<h1>Create New Sale</h1>
+<form action = "<%=baseURL%>" method = "post">
+  <label for="name">Date</label>
+  <input type="text" name="date" required />
+  <label for="phone">Customer</label>
+  <input type="text" name="customerName" required />
+  <label for="email">Amount</label>
+  <input type="text" name="amount" required />
+  <label for="address">Description</label>
+  <input type="text" name="description" />
+  <label for="contactPerson">Sales Person</label>
+  <input type="text" name="salesPerson"/>
+  <input type="submit" value="Create Sale" />
+</form>

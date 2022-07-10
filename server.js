@@ -21,6 +21,7 @@ const sessionStore = new MongoDBStore({
 //Routers
 const employeesRouter = require('./src/routes/employees.router')
 const customersRouter = require('./src/routes/customers.router')
+const salesRouter = require('./src/routes/sales.router')
 const sessionsRouter = require('./src/routes/sessions.router')
 
 //Middleware
@@ -37,6 +38,7 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use('/employees', employeesRouter)
 app.use('/customers', customersRouter)
+app.use('/sales', salesRouter)
 app.use('/', sessionsRouter)
 
 //Config
