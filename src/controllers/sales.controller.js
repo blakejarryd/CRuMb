@@ -21,6 +21,7 @@ const getSales = (req,res) => {
       {
         sales, 
         baseURL,
+        pageTitle: 'Sales',
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -33,6 +34,7 @@ const showSale = (req,res) => {
       {
         sale, 
         baseURL,
+        pageTitle: 'Sale',
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -45,6 +47,7 @@ const newSaleForm = (req, res) => {
   res.render('sales/newSale.ejs', 
   {
     baseURL,
+    pageTitle: 'New Sale',
     currentEmployee: req.session.currentEmployee
   })
 }
@@ -74,6 +77,7 @@ const editSaleForm = (req, res) => {
       {
         sale, 
         baseURL,
+        pageTitle: 'Edit Sale',
         currentEmployee: req.session.currentEmployee
       })
     })

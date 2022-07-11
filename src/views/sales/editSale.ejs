@@ -1,5 +1,4 @@
 <%- include ('../partials/header.ejs') %>
-<h1>Update sale Details</h1>
 <div class = 'update-sale-details'>
   <form action = "<%= baseURL %>/<%= sale.id %>?_method=PUT" method="POST">
     <input type = "text" name = 'date' value = "<%= sale.date %>" /> 

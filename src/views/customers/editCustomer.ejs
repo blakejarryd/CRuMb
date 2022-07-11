@@ -1,5 +1,4 @@
 <%- include ('../partials/header.ejs') %>
-<h1>Update Customer Details</h1>
 <div class = 'update-customer-details'>
   <form action = "<%= baseURL %>/<%= customer.id %>?_method=PUT" method="POST">
     <input type = "text" name = 'name' value = "<%= customer.name %>" /> 

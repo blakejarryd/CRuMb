@@ -19,6 +19,7 @@ const getEmployees = (req,res) => {
       {
         employees, 
         baseURL,
+        pageTitle: 'Employees',
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -31,6 +32,7 @@ const showEmployee = (req,res) => {
       {
         employee, 
         baseURL,
+        pageTitle: 'Employee',
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -43,6 +45,7 @@ const newEmployeeForm = (req, res) => {
   res.render('employees/newEmployee.ejs', 
   {
     baseURL,
+    pageTitle: 'Create Employee',
     currentEmployee: req.session.currentEmployee
   })
 }
@@ -64,6 +67,7 @@ const editEmployeeForm = (req, res) => {
       {
         employee, 
         baseURL,
+        pageTitle: 'Edit Employee',
         currentEmployee: req.session.currentEmployee
       })
     })
