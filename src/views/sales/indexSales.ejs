@@ -3,7 +3,8 @@
 <% for (sale of sales) { %>
   <a href = "<%= baseURL %>/<%= sale.id %>" >
     <div class = 'sale'>
-      <p> <%= sale.date %>: <%= sale.customer %> </p>
+      <p> <%= sale.date %>: <%= sale.customerName %> </p>
     </div>
   </a>
 <% } %>
+<%- include ('../partials/footer.ejs') %>

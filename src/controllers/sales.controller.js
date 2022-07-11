@@ -1,4 +1,5 @@
 const Customers = require('../models/customer.model')
+const Employees = require('../models/employee.model')
 const Sales = require('../models/sale.model')
 
 const baseURL = '/sales'
@@ -49,9 +50,17 @@ const newSaleForm = (req, res) => {
 }
 
 const newSale = (req, res) => {
-  Sales.create(req.body)
-    .then((newSale) => {
-      res.redirect(baseURL)
+  Customers.findOne({name:req.body.customerName}, {_id: 1})
+  .then((customerID) => {req.body.customer = customerID})
+    .then(() => {
+      Employees.findOne({name:req.body.salesPerson}, {_id: 1})
+      .then((employeeID) => {req.body.employee = employeeID})
+        .then(() => {
+          Sales.create(req.body)
+          .then((newSale) => {
+            res.redirect(baseURL)
+          })
+        })
     })
 }
 
