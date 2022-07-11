@@ -91,18 +91,34 @@ const newSale = (req, res) => {
 EDIT SALE
 ================================================*/
 const editSaleForm = (req, res) => {
-  Sales.findById(req.params.id)
-    .then((sale) => {
-      res.render(('Sales/editSale.ejs'), 
-      {
-        sale, 
-        baseURL,
-        pageTitle: 'Edit Sale',
-        addNew: false,
-        currentEmployee: req.session.currentEmployee
-      })
+  customers = []
+  employees = []
+  Customers.find({}, {name: 1})
+    .then((result) => {
+      customers = result
     })
-}
+    .then(() => {
+      Employees.find({}, {firstName: 1, lastName: 1})
+      .then((result) => {
+        employees = result
+      })
+      .then(() => {
+        Sales.findById(req.params.id)
+          .then((sale) => {
+            res.render(('Sales/editSale.ejs'), 
+            {
+              sale, 
+              customers,
+              employees,
+              baseURL,
+              pageTitle: 'Edit Sale',
+              addNew: false,
+              currentEmployee: req.session.currentEmployee
+            })
+          })
+        })
+      })
+  }
 
 const editSale = (req, res) => {
   Sales.findByIdAndUpdate(req.params.id, {$set: req.body}, {new:true})

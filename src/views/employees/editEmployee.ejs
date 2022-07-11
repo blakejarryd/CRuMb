@@ -1,12 +1,37 @@
 <%- include ('../partials/header.ejs') %>
-<div class = 'update-employee-details'>
+<div class = 'container'>
   <form action = "<%= baseURL %>/<%= employee.id %>?_method=PUT" method="POST">
-    <input type = "text" name = 'username' value = "<%= employee.username %>" /> 
-    <input type = "text" name = 'firstName' value = "<%= employee.firstName %>" /> 
-    <input type = "text" name = 'lastName' value = "<%= employee.lastName %>" /> 
-    <input type = "text" name = 'phone' value = "<%= employee.phone %>" /> 
-    <input type = "text" name = 'email' value = "<%= employee.email %>" /> 
-    <input type="submit" value="Save" />
+    <div class="row mb-4">
+      <div class="form-outline mb-4">
+        <label class="form-label" for="username">Username</label>
+        <input type="text" name = "username" class="form-control" value = "<%= employee.username %>"/>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="firstName">First name</label>
+          <input type="text" name="firstName" class="form-control" value = "<%= employee.firstName %>"/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="lastName">Last name</label>
+          <input type="text" name="lastName" class="form-control" value = "<%= employee.lastName %>"/>
+        </div>
+      </div>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="phone">Phone</label>
+      <input type="string" name="phone" class="form-control" value = "<%= employee.phone %>" />
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="email">Email</label>
+      <input type="email" name="email" class="form-control" value = "<%= employee.email %>"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Employee</button>
+    <a href = "<%=baseURL%>" >
+    <button type="button" class="btn btn-outline-secondary">Cancel</button>
+    </a>
+  </div>
   </form>
 </div>
 <%- include ('../partials/footer.ejs') %>
