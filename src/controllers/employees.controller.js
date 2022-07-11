@@ -20,6 +20,7 @@ const getEmployees = (req,res) => {
         employees, 
         baseURL,
         pageTitle: 'Employees',
+        addNew: true,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -33,6 +34,7 @@ const showEmployee = (req,res) => {
         employee, 
         baseURL,
         pageTitle: 'Employee',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -46,6 +48,7 @@ const newEmployeeForm = (req, res) => {
   {
     baseURL,
     pageTitle: 'Create Employee',
+    addNew: false,
     currentEmployee: req.session.currentEmployee
   })
 }
@@ -68,6 +71,7 @@ const editEmployeeForm = (req, res) => {
         employee, 
         baseURL,
         pageTitle: 'Edit Employee',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })

@@ -27,7 +27,7 @@ const login = (req,res) => {
     } else {
       // username is found and password matches
       req.session.currentEmployee = employee
-      res.redirect('/employees')
+      res.redirect('/customers')
     }  
   })
 }

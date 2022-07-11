@@ -6,14 +6,6 @@ module.exports = [
     address: "50/700 Collins Street, Melbourne VIC 3000, ",
     contactPerson: "Lisa Stockton",
     relationshipManager: "John Smith",
-    sales: [
-      {
-        date: '01/02/2022',
-        amount: 5000,
-        description: 'big deal',
-        employee: 'John Smith'
-      }
-    ]
   },
   {
     name: "Campbell Brokers",
@@ -22,13 +14,5 @@ module.exports = [
     address: "12/120 George Street, Sydney VIC 2000, ",
     contactPerson: "Lisa Stockton",
     relationshipManager: "Mary Jane",
-    sales: [
-      {
-        date: '01/02/2022',
-        amount: 5000,
-        description: 'big deal',
-        employee: 'Mary Jane'
-      }
-    ]
   },
 ]

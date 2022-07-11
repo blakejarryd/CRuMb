@@ -1,9 +1,22 @@
 <%- include ('../partials/header.ejs') %>
-<% for (customer of customers) { %>
-  <a href = "<%= baseURL %>/<%= customer.id %>" >
-    <div class = 'customer'>
-      <p> <%= customer.name %> </p>
+  <div class = 'container table'>
+    <div class = 'row border font-weight-bold'>
+      <div class = 'col'>NAME</div>
+      <div class = 'col'>PHONE</div>
+      <div class = 'col'>EMAIL</div>
+      <div class = 'col'>ADDRESS</div>
     </div>
-  </a>
-<% } %>
+      <% for (customer of customers) { %>
+        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= customer.id %>">
+          <div class = 'row border text-secondary'>
+            <div class = 'col'><%= customer.name %></div>
+            <div class = 'col'><%= customer.phone %></div>
+            <div class = 'col'><%= customer.email %></div>
+            <div class = 'col'><%= customer.address %></div>
+          </div>
+        </a>
+      <% } %>
+  </div>
+  <script>
+  </script>
 <%- include ('../partials/footer.ejs') %>

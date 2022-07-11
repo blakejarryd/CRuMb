@@ -20,6 +20,7 @@ const getCustomers = (req,res) => {
         customers, 
         baseURL,
         pageTitle: 'Customers',
+        addNew: true,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -33,6 +34,7 @@ const showCustomer = (req,res) => {
         customer, 
         baseURL,
         pageTitle: 'Customer',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -46,6 +48,7 @@ const newCustomerForm = (req, res) => {
   {
     baseURL,
     pageTitle: 'New Customer',
+    addNew: false,
     currentEmployee: req.session.currentEmployee
   })
 }
@@ -68,6 +71,7 @@ const editCustomerForm = (req, res) => {
         customer, 
         baseURL,
         pageTitle: 'Edit Customer',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })

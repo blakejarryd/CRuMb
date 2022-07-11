@@ -31,7 +31,12 @@
       <label class="form-label" for="description">Description</label>
       <input class="form-control" type="text" name = "text" />
     </div>
-    <button type="submit" class="btn btn-primary btn-block mb-4">Create Sale</button>
+    <div>
+      <button type="submit" class="btn btn-primary">Create Sale</button>
+      <a href = "<%=baseURL%>" >
+      <button type="button" class="btn btn-outline-secondary">Cancel</button>
+      </a>
+    </div>
   </form>
 </div>
 <%- include ('../partials/footer.ejs') %>

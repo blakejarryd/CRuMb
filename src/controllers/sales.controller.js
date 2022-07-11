@@ -23,6 +23,7 @@ const getSales = (req,res) => {
         sales, 
         baseURL,
         pageTitle: 'Sales',
+        addNew: true,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -36,6 +37,7 @@ const showSale = (req,res) => {
         sale, 
         baseURL,
         pageTitle: 'Sale',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -57,14 +59,13 @@ const newSaleForm = (req, res) => {
         employees = result
       })
       .then(() => {
-        console.log(customers)
-        console.log(employees)
         res.render('sales/newSale.ejs', 
         {
           baseURL,
           customers,
           employees,
           pageTitle: 'New Sale',
+          addNew: false,
           currentEmployee: req.session.currentEmployee
         })
     })
@@ -97,6 +98,7 @@ const editSaleForm = (req, res) => {
         sale, 
         baseURL,
         pageTitle: 'Edit Sale',
+        addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })

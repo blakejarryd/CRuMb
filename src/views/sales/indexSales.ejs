@@ -1,9 +1,24 @@
 <%- include ('../partials/header.ejs') %>
-<% for (sale of sales) { %>
-  <a href = "<%= baseURL %>/<%= sale.id %>" >
-    <div class = 'sale'>
-      <p> <%= sale.date %>: <%= sale.customerName %> </p>
+  <div class = 'container table'>
+    <div class = 'row border font-weight-bold'>
+      <div class = 'col'>DATE</div>
+      <div class = 'col'>CUSTOMER</div>
+      <div class = 'col'>AMOUNT</div>
+      <div class = 'col'>SALESPERSON</div>
     </div>
-  </a>
-<% } %>
+      <% for (sale of sales) { %>
+        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= sale.id %>">
+          <div class = 'row border text-secondary'>
+            <% let date = sale.date.toDateString() %>
+            <div class = 'col'><%= date %></div>
+            <div class = 'col'><%= sale.customerName %></div>
+            <div class = 'col'><%= sale.amount %></div>
+            <div class = 'col'><%= sale.salesPerson %></div>
+          </div>
+        </a>
+      <% } %>
+  </div>
+  <script>
+  </script>
 <%- include ('../partials/footer.ejs') %>
+
