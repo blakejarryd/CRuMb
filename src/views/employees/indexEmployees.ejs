@@ -1,15 +1,29 @@
 <%- include ('../partials/header.ejs') %>
-<div class = 'container'>
-  <div class = 'row'>
+  <div class = 'container table'>
+    <table data-toggle="table" data-pagination = "true" data-search = "true" class = "table-striped">
+      <thead>
+        <tr>
+          <th data-sortable = "true" class="th-sm">Name</th>
+          <th class="th-sm">Phone</th>
+          <th class="th-sm">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% for (employee of employees) { %>
+        <tr>
+          <a href = "<%= baseURL %>/<%= employee.id %>" ></a>
+          <td><%= employee.firstName %> <%= employee.lastName %></td>
+          <td><%= employee.phone %></td>
+          <td><%= employee.email %></td>
+          </a>
+        </tr>
+    
+      <% } %>
+      </tbody>
+    </table>
   </div>
-  <div class = 'row justify-content-center align-items-center'>
-    <% for (employee of employees) { %>
-      <div class = 'p-2 border bg-light'>
-        <a href = "<%= baseURL %>/<%= employee.id %>" >
-          <p> <%= employee.firstName %> <%= employee.lastName %> </p>
-        </a>
-    </div>
-    <% } %>
-  </div>
-</div>
+
+  <script>
+  </script>
+
 <%- include ('../partials/footer.ejs') %>
