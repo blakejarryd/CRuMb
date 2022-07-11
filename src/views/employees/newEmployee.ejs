@@ -1,15 +1,33 @@
 <%- include ('../partials/header.ejs') %>
-<form action = "<%=baseURL%>" method = "post">
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" required />
-  <label for="firstName">First Name</label>
-  <input type="text" name="firstName" id="firstName" required />
-  <label for="lastName">Last Name</label>
-  <input type="text" name="lastName" id="lastName" required />
-  <label for="phone">Phone</label>
-  <input type="text" name="phone" />
-  <label for="email">Email</label>
-  <input type="text" name="email"/>
-  <input type="submit" value="Create User" />
-</form>
+<div class = 'container'>
+  <form action = "<%=baseURL%>" method = "post">
+    <div class="row mb-4">
+      <div class="form-outline mb-4">
+        <label class="form-label" for="username">Username</label>
+        <input type="text" name = "username" class="form-control" />
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="firstName">First name</label>
+          <input type="text" name="firstName" class="form-control" />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="lastName">Last name</label>
+          <input type="text" name="lastName" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="phone">Phone</label>
+      <input type="number" name="phone" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="email">Email</label>
+      <input type="email" name="email" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Create Employee</button>
+  </form>
+</div>
 <%- include ('../partials/footer.ejs') %>

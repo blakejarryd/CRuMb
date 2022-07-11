@@ -7,7 +7,8 @@ const employeeSchema = new Schema({
   lastName: {type: String, required: true},
   phone: {type: String},
   email: {type: String},
-  password: {type: String, default: 'password'}
+  password: {type: String, default: 'password'},
+  sales: [{type: mongoose.Schema.Types.ObjectId, ref: 'Sale'}]
 },
 {timestamps: true}
 )
