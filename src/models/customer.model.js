@@ -9,7 +9,7 @@ const customerSchema = new Schema({
   email: {type: String},
   address: {type: String},
   contactPerson: {type: String},
-  relationshipManager: {type: String},
+  sales: [{type: mongoose.Schema.Types.ObjectId, ref: 'Sale'}]
 },
 {timestamps: true}
 )

@@ -6,7 +6,9 @@ const baseURL = '/login'
 LOGIN
 ================================================*/
 const loginForm = (req,res) => {
-  res.render('sessions/login.ejs', {baseURL})
+  res.render('sessions/login.ejs', {
+    baseURL,
+  })
 }
 
 const login = (req,res) => {
