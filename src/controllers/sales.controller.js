@@ -1,3 +1,4 @@
+const e = require('express')
 const Customers = require('../models/customer.model')
 const Employees = require('../models/employee.model')
 const Sales = require('../models/sale.model')
@@ -44,11 +45,29 @@ const showSale = (req,res) => {
 CREATE SALE
 ================================================*/
 const newSaleForm = (req, res) => {
-  res.render('sales/newSale.ejs', 
-  {
-    baseURL,
-    pageTitle: 'New Sale',
-    currentEmployee: req.session.currentEmployee
+  customers = []
+  employees = []
+  Customers.find({}, {name: 1})
+    .then((result) => {
+      customers = result
+    })
+    .then(() => {
+      Employees.find({}, {firstName: 1, lastName: 1})
+      .then((result) => {
+        employees = result
+      })
+      .then(() => {
+        console.log(customers)
+        console.log(employees)
+        res.render('sales/newSale.ejs', 
+        {
+          baseURL,
+          customers,
+          employees,
+          pageTitle: 'New Sale',
+          currentEmployee: req.session.currentEmployee
+        })
+    })
   })
 }
 

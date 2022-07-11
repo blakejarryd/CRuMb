@@ -1,23 +1,37 @@
 <%- include ('../partials/header.ejs') %>
-<div class = "container">
+<div class = 'container'>
   <form action = "<%=baseURL%>" method = "post">
-    <div class = "row d-flex justify-content-end">
-      <div class = "col">
-        <label for="name">Date: </label>
-      </div>
-      <div class = "col">
-        <input type="text" name="date" required />
-      </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="date">Date</label>
+      <input class="form-control" type="date" name = "date" />
     </div>
-    <label for="phone">Customer</label>
-    <input type="text" name="customerName" required />
-    <label for="email">Amount</label>
-    <input type="text" name="amount" required />
-    <label for="address">Description</label>
-    <input type="text" name="description" />
-    <label for="contactPerson">Sales Person</label>
-    <input type="text" name="salesPerson"/>
-    <input type="submit" value="Create Sale" />
+    <div class="form-outline mb-4">
+      <label class="form-label" for="customer">Customer</label>
+      <input class="form-control" list="customers" name="customer" placeholder="Type to search..." />
+      <datalist id = "customers">
+        <% for (customer of customers) { %>
+          <option value = "<%= customer.name %>">
+        <% } %>
+      </datalist>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="employee">Sales Person</label>
+      <input class="form-control" list="employees" name="employee" placeholder="Type to search..." />
+      <datalist id = "employees">
+        <% for (employee of employees) { %>
+          <option value = "<%= employee.firstName %> <%= employee.lastName %>">
+        <% } %>
+      </datalist>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="amount">Amount</label>
+      <input class="form-control" type="number" name = "amount" />
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="description">Description</label>
+      <input class="form-control" type="text" name = "text" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Create Sale</button>
   </form>
 </div>
 <%- include ('../partials/footer.ejs') %>
