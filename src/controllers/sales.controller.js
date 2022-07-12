@@ -24,6 +24,7 @@ const getSales = (req,res) => {
         baseURL,
         pageTitle: 'Sales',
         addNew: true,
+        helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
       })
     })
@@ -39,6 +40,7 @@ const showSale = (req,res) => {
         baseURL,
         pageTitle: 'Sale',
         addNew: false,
+        helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
       })
     })

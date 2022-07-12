@@ -12,7 +12,7 @@
             <% let date = sale.date.toDateString() %>
             <div class = 'col'><%= date %></div>
             <div class = 'col'><%= sale.customer.name %></div>
-            <div class = 'col'><%= sale.amount %></div>
+            <div class = 'col'><%= helper.stringToCurrency(sale.amount) %></div>
             <div class = 'col'><%= sale.employee.name %></div>
           </div>
         </a>

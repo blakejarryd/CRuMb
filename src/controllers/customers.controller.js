@@ -1,5 +1,6 @@
 const Customers = require('../models/customer.model')
 const Sales = require('../models/sale.model')
+const helper = require('../utils/helper')
 
 const baseURL = '/customers'
 
@@ -44,6 +45,7 @@ const showCustomer = (req,res) => {
         baseURL,
         pageTitle: 'Customer',
         addNew: false,
+        helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
       })
     })

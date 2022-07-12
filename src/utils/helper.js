@@ -5,6 +5,12 @@ const isLoggedIn = (req, res, next) => {
   next()
 }
 
+const stringToCurrency = (string) => {
+  let dollarFormat = Intl.NumberFormat('en-US')
+  return '$'+dollarFormat.format(string)
+}
+
 module.exports = {
-  isLoggedIn
+  isLoggedIn,
+  stringToCurrency
 }
