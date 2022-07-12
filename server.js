@@ -34,7 +34,7 @@ app.use(session({
   }
 }))
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static('/public'))
+app.use(express.static('src/public'))
 app.use(methodOverride('_method'))
 app.use('/employees', employeesRouter)
 app.use('/customers', customersRouter)

@@ -1,18 +1,22 @@
 <%- include ('../partials/header.ejs') %>
-  <div class = 'container table'>
-    <div class = 'row border font-weight-bold'>
-      <div class = 'col'>NAME</div>
-      <div class = 'col'>PHONE</div>
-      <div class = 'col'>EMAIL</div>
-      <div class = 'col'>ADDRESS</div>
+  <div class = 'container mytable'>
+    <div class = 'row table-header'>
+      <div class = 'col-3'>NAME</div>
+      <div class = 'col-2'>PHONE</div>
+      <div class = 'col-3'>EMAIL</div>
+      <div class = 'col-4'>ADDRESS</div>
     </div>
-      <% for (customer of customers) { %>
-        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= customer.id %>">
-          <div class = 'row border text-secondary'>
-            <div class = 'col'><%= customer.name %></div>
-            <div class = 'col'><%= customer.phone %></div>
-            <div class = 'col'><%= customer.email %></div>
-            <div class = 'col'><%= customer.address %></div>
+      <% for (let i = 0; i < customers.length; i++) { %>
+        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= customers[i].id %>">
+          <% if (i % 2 === 0) { %>
+          <div class = 'row table-row zebra'>
+          <% } else { %>
+          <div class = 'row table-row'>
+          <% } %>
+            <div class = 'col-3'><%= customers[i].name %></div>
+            <div class = 'col-2'><%= customers[i].phone %></div>
+            <div class = 'col-3'><%= customers[i].email %></div>
+            <div class = 'col-4'><%= customers[i].address %></div>
           </div>
         </a>
       <% } %>

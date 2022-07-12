@@ -1,4 +1,58 @@
-header {
-  background-color: lightblue;
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #CFD4DA;
 }
+
+nav {
+  background-color: #2368A2;
+
+}
+
+.nav-link, .logout {
+  color: #AAD4F5;
+}
+
+.nav-item:hover, .logout:hover {
+  background-color: #1B4971;
+}
+
+h3 {
+  color: #495057;
+  margin-bottom: 0;
+}
+
+.mytable {
+  font-size: 18px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+}
+
+a {
+  color: #868D96
+}
+
+a:hover {
+  color: #64A2D8
+}
+
+.table-header {
+  background-color: #2369a28e;
+  color: #DDE2E6
+}
+
+.table-row {
+  background-color: #F0F2F4;
+  display: flex;
+  align-items: center;
+  height: 60px
+}
+
+.table-row:hover {
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 0.5);
+}
+
+
+.zebra {
+    background-color: #F8F9FA;
+}
+
 

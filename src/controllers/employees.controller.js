@@ -100,7 +100,6 @@ DELETE USER
 const deleteEmployee = (req, res) => {
   Employees.findByIdAndDelete(req.params.id) 
     .then((deletedEmployee) => {
-    console.log(deletedEmployee)
     res.redirect(baseURL)
     })
 }
