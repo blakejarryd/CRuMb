@@ -1,6 +1,5 @@
 const Customers = require('../models/customer.model')
 const Sales = require('../models/sale.model')
-const helper = require('../utils/helper')
 
 const baseURL = '/customers'
 

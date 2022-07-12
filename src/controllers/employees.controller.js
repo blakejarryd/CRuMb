@@ -1,4 +1,5 @@
 const Employees = require('../models/employee.model')
+const Sales = require('../models/sale.model')
 
 const baseURL = '/employees'
 
@@ -27,17 +28,26 @@ const getEmployees = (req,res) => {
 }
 
 const showEmployee = (req,res) => {
+  let employee = {}
+  let sales = {}
   Employees.findById(req.params.id)
-    .then((employee) => {
+    .then((response) => {
+      employee = response
+    Sales.find({_id: {$in: employee.sales}})
+      .then((response) => {
+      sales = response
       res.render('employees/showEmployee.ejs', 
       {
         employee, 
+        sales,
         baseURL,
         pageTitle: 'Employee',
         addNew: false,
+        helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
       })
     })
+  })
 }
 
 /*===============================================
