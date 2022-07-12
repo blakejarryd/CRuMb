@@ -1,16 +1,20 @@
 <%- include ('../partials/header.ejs') %>
-  <div class = 'container table'>
-    <div class = 'row border font-weight-bold'>
+  <div class = 'container mytable'>
+    <div class = 'row table-header'>
       <div class = 'col'>NAME</div>
       <div class = 'col'>PHONE</div>
       <div class = 'col'>EMAIL</div>
     </div>
-      <% for (employee of employees) { %>
-        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= employee.id %>">
-          <div class = 'row border text-secondary'>
-            <div class = 'col'><%= employee.firstName %> <%= employee.lastName %></div>
-            <div class = 'col'><%= employee.phone %></div>
-            <div class = 'col'><%= employee.email %></div>
+      <% for (let i = 0; i < employees.length; i++) { %>
+        <a class = "text-decoration-none" href = "<%= baseURL %>/<%= employees[i].id %>">
+          <% if (i % 2 === 0) { %>
+            <div class = 'row table-row zebra'>
+          <% } else { %>
+            <div class = 'row table-row'>
+          <% } %>  
+            <div class = 'col'><%= employees[i].firstName %> <%= employees[i].lastName %></div>
+            <div class = 'col'><%= employees[i].phone %></div>
+            <div class = 'col'><%= employees[i].email %></div>
           </div>
         </a>
       <% } %>

@@ -9,9 +9,9 @@
       <% for (let i = 0; i < customers.length; i++) { %>
         <a class = "text-decoration-none" href = "<%= baseURL %>/<%= customers[i].id %>">
           <% if (i % 2 === 0) { %>
-          <div class = 'row table-row zebra'>
+            <div class = 'row table-row zebra'>
           <% } else { %>
-          <div class = 'row table-row'>
+            <div class = 'row table-row'>
           <% } %>
             <div class = 'col-3'><%= customers[i].name %></div>
             <div class = 'col-2'><%= customers[i].phone %></div>
