@@ -33,7 +33,7 @@ const showCustomer = (req,res) => {
   Customers.findById(req.params.id)
     .then((response) => {
     customer = response
-    Sales.find({_id: {$in: customer.sales}})
+    Sales.find({_id: {$in: customer.sales}}).sort({date:-1})
       .then((response) => {
       sales = response
       res.render('customers/showCustomer.ejs', 
@@ -41,7 +41,7 @@ const showCustomer = (req,res) => {
         customer, 
         sales,
         baseURL,
-        pageTitle: 'Customer',
+        pageTitle: `${customer.name} Profile`,
         addNew: false,
         helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee

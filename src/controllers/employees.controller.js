@@ -33,7 +33,7 @@ const showEmployee = (req,res) => {
   Employees.findById(req.params.id)
     .then((response) => {
       employee = response
-    Sales.find({_id: {$in: employee.sales}})
+    Sales.find({_id: {$in: employee.sales}}).sort({date:-1})
       .then((response) => {
       sales = response
       res.render('employees/showEmployee.ejs', 

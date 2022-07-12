@@ -1,7 +1,7 @@
 <%- include ('../partials/header.ejs') %>
 <div class = "container">
   <div class = "row>">
-    <p>Sale Date: <%= sale.date %> </p>
+    <p>Sale Date: <%= (sale.date).toLocaleDateString() %> </p>
   </div>
   <div class = "row>">
     <p>Customer: <a href = "/customers/<%= sale.customer.id %>"><%= sale.customer.name %> </a></p>
