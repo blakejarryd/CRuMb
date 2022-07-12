@@ -30,6 +30,7 @@ const getSales = (req,res) => {
 }
 
 const showSale = (req,res) => {
+  let sale = {}
   Sales.findById(req.params.id)
     .then((sale) => {
       res.render('sales/showSale.ejs', 
@@ -73,20 +74,30 @@ const newSaleForm = (req, res) => {
 }
 
 const newSale = (req, res) => {
-  Customers.findOne({name:req.body.customerName}, {_id: 1})
-  .then((customerID) => {req.body.customer = customerID})
-    .then(() => {
-      Employees.findOne({name:req.body.salesPerson}, {_id: 1})
-      .then((employeeID) => {req.body.employee = employeeID})
-        .then(() => {
-          Sales.create(req.body)
-          .then((newSale) => {
-            res.redirect(baseURL)
-          })
+  let sale = req.body
+  Promise.all([
+    Customers.findById(req.body.customer, {name: 1, _id: 0})
+    .then((res) => {
+      customerName = res
+    }),
+    Employees.findById(req.body.employee, {firstName: 1,lastName: 1, _id: 0})
+    .then((res) => {
+      employeeName = res
+    })]).then(() => {
+      sale.customer = {
+        name: customerName.name, 
+        id: sale.customer,
+      }
+      sale.employee = {
+        name: employeeName.firstName + ' ' + employeeName.lastName, 
+        id: sale.employee,
+      }
+       Sales.create(req.body)
+        .then((newSale) => {
+          res.redirect(baseURL)
         })
     })
 }
-
 /*===============================================
 EDIT SALE
 ================================================*/

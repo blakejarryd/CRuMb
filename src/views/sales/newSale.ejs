@@ -7,21 +7,21 @@
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="customer">Customer</label>
-      <input class="form-control" list="customers" name="customer" placeholder="Type to search..." />
-      <datalist id = "customers">
+      <select class = "form-select" name="customer">
+        <option selected></option>
         <% for (customer of customers) { %>
-          <option value = "<%= customer.name %>">
+          <option value = "<%= customer.id %>"> <%= customer.name %> </option>
         <% } %>
-      </datalist>
+      </select>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="employee">Sales Person</label>
-      <input class="form-control" list="employees" name="employee" placeholder="Type to search..." />
-      <datalist id = "employees">
+      <select class = "form-select" name="employee">
+        <option selected></option>
         <% for (employee of employees) { %>
-          <option value = "<%= employee.firstName %> <%= employee.lastName %>">
+          <option value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
         <% } %>
-      </datalist>
+      </select>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="amount">Amount</label>
@@ -29,7 +29,7 @@
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="description">Description</label>
-      <input class="form-control" type="text" name = "text" />
+      <input class="form-control" type="text" name = "description" />
     </div>
     <div>
       <button type="submit" class="btn btn-primary">Create Sale</button>
@@ -39,4 +39,5 @@
     </div>
   </form>
 </div>
+
 <%- include ('../partials/footer.ejs') %>

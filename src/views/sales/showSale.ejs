@@ -5,7 +5,7 @@
     <p>Sale Date: <%= date %> </p>
   </div>
   <div class = "row>">
-    <p>Customer: <%= sale.customerName %> </p>
+    <p>Customer: <a href = "/customers/<%= sale.customer.id %>"><%= sale.customer.name %> </a></p>
   </div>
   <div class = "row>">
     <p>Amount: <%= sale.amount %> </p>
@@ -14,7 +14,7 @@
     <p>Description: <%= sale.description %> </p>
   </div>
   <div class = "row>">
-    <p>Contact Person: <%= sale.salesPerson %> </p>
+    <p>Contact Person: <a href = "/employees/<%= sale.employee.id %>"><%= sale.employee.name %> </a></p>
 </div>
 <div class = "row justify-content-around">
   <div class = "col">
@@ -22,12 +22,12 @@
       <button type="button" class="btn btn-outline-primary">Edit</button>
     </a>
     <a class = 'text-decoration-none' href = "<%= baseURL %>">
-      <button type="button" class="btn btn-outline-secondary">Back</button>
+      <button type="button" class="btn btn-outline-secondary">Cancel</button>
     </a>
   </div>
   <div class = "col-10">
-    <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
-      <button type="button" class="btn btn-outline-danger">Delete</button>
+    <form action = "<%= baseURL %>/<%= sale.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="btn btn-outline-danger">Delete</button>
     </form>
   </div>
 </div>

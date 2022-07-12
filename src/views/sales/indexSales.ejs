@@ -11,9 +11,9 @@
           <div class = 'row border text-secondary'>
             <% let date = sale.date.toDateString() %>
             <div class = 'col'><%= date %></div>
-            <div class = 'col'><%= sale.customerName %></div>
+            <div class = 'col'><%= sale.customer.name %></div>
             <div class = 'col'><%= sale.amount %></div>
-            <div class = 'col'><%= sale.salesPerson %></div>
+            <div class = 'col'><%= sale.employee.name %></div>
           </div>
         </a>
       <% } %>

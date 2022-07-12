@@ -3,12 +3,16 @@ const Schema = mongoose.Schema
 
 const saleSchema = new Schema({
   date: {type: Date},
-  customerName: {type: String},
-  salesPerson: {type: String},
+  customer: {
+    name:{type: String}, 
+    id: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'}
+    },
+  employee: {
+    name: {type: String}, 
+    id: {type: mongoose.Schema.Types.ObjectId, ref: 'Employee'}
+    },
   amount: {type: Number},
   description: {type: String},
-  customer: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
-  employee: {type: mongoose.Schema.Types.ObjectId, ref: 'Employee'}
 },
 {timestamps: true}
 )
