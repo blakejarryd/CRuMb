@@ -2,47 +2,43 @@
 <div class = "container">
   <div class = "row">
     <div class = "col">
-      <h5 class = "pb-2">Details</h5>
+    <h5>Details</h5>
+      <div class = "details">
       <p>Username: <%= employee.username %> </p>
       <p>First Name: <%= employee.firstName %> </p>
       <p>Last Name: <%= employee.lastName %> </p>
       <p>Phone: <%= employee.phone %> </p>
       <p>Email: <%= employee.email %> </p>
-      <!-- <div class = "row"> -->
-          <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
-            <button type="button" class="btn btn-outline-primary">Edit</button>
-          </a>
-          <a class = 'text-decoration-none' href = "<%= baseURL %>">
-            <button type="button" class="btn btn-outline-secondary">Cancel</button>
-          </a>
-          <form class ="mt-3" action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-outline-danger">Delete</button>
-          </form>
-      <!-- </div> -->
-    </div> 
-    <div class = "col">
-      <h5 class = "pb-2"><%= employee.firstName + ' ' + employee.lastName %> Sales</h5>
-      <div class = 'container mytable-small'>
-        <div class = 'row table-header'>
-          <div class = 'col-4'>DATE</div>
-          <div class = 'col-3'>AMOUNT</div>
-          <div class = 'col-5'>CUSTOMER</div>
-        </div>
-        <% for (let i = 0; i < sales.length; i++) { %>
-          <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
-            <% if (i % 2 === 0) { %>
-              <div class = 'row table-row-small zebra'>
-            <% } else { %>
-              <div class = 'row table-row-small'>
-            <% } %>
+      <form class ="mt-3" action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST"></form>
+        <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
+          <button type="button" class="btn btn-outline-primary">Edit</button>
+        </a>
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
+      </form>
+    </div>
+  </div> 
+  <div class = "col">
+    <h5>Sales</h5>
+    <div class = 'container mytable-small'>
+      <div class = 'row table-header'>
+        <div class = 'col-4'>DATE</div>
+        <div class = 'col-3'>AMOUNT</div>
+        <div class = 'col-5'>CUSTOMER</div>
+      </div>
+      <% for (let i = 0; i < sales.length; i++) { %>
+        <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
+          <% if (i % 2 === 0) { %>
+            <div class = 'row table-row-small zebra'>
+          <% } else { %>
+            <div class = 'row table-row-small'>
+          <% } %>
             <div class = 'col-4'><%= (sales[i].date).toLocaleDateString() %></div>
             <div class = 'col-3'><%= helper.stringToCurrency(sales[i].amount) %></div>
             <div class = 'col-5'><%= sales[i].customer.name %></div>
-            </div>
-            </a>
-          <% } %>
-      </div>
+          </div>
+        </a>
+      <% } %>
     </div>
-  </div> 
-</div>
+  </div>
+</div> 
 <%- include ('../partials/footer.ejs') %>

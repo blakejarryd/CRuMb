@@ -2,46 +2,42 @@
 <div class = "container">
   <div class = "row">
     <div class = "col">
-      <h5 class = "pb-2">Details</h5>
+      <h5>Details</h5>
+      <div class = "details">
       <p>Name: <%= customer.name %> </p>
       <p>Phone: <%= customer.phone %> </p>
       <p>Email: <%= customer.email %> </p>
       <p>Address: <%= customer.address %> </p>
       <p>Contact Person: <%= customer.contactPerson %> </p>
-      <!-- <div class = "row"> -->
+      <form action = "<%= baseURL %>/<%= customer.id %>?_method=DELETE" method="POST"></form>
         <a class ='text-decoration-none' href = "<%= baseURL %>/<%= customer.id %>/edit">
           <button type="button" class="btn btn-outline-primary">Edit</button>
         </a>
-        <a class = 'text-decoration-none' href = "<%= baseURL %>">
-          <button type="button" class="btn btn-outline-secondary">Cancel</button>
-        </a>
-        <form class ="mt-3" action = "<%= baseURL %>/<%= customer.id %>?_method=DELETE" method="POST">
-          <button type="submit" class="btn btn-outline-danger">Delete</button>
-        </form>
-      <!-- </div> -->
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
+      </form>
     </div>
-    <div class = "col">
-      <h5 class = "pb-2"><%= customer.name %> Sales</h5>
-      <div class = 'container mytable-small'>
-        <div class = 'row table-header'>
-          <div class = 'col'>DATE</div>
-          <div class = 'col'>AMOUNT</div>
-          <div class = 'col'>SALESPERSON</div>
-        </div>
-        <% for (let i = 0; i < sales.length; i++) { %>
-            <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
-              <% if (i % 2 === 0) { %>
-                <div class = 'row table-row-small zebra'>
-              <% } else { %>
-                <div class = 'row table-row-small'>
-              <% } %>
-              <div class = 'col'><%= (sales[i].date).toLocaleDateString() %></div>
-              <div class = 'col'><%= helper.stringToCurrency(sales[i].amount) %></div>
-              <div class = 'col'><%= sales[i].employee.name %></div>
-              </div>
-            </a>
-          <% } %>
+  </div>
+  <div class = "col">
+    <h5>Sales</h5>
+    <div class = 'container mytable-small'>
+      <div class = 'row table-header'>
+        <div class = 'col'>DATE</div>
+        <div class = 'col'>AMOUNT</div>
+        <div class = 'col'>SALESPERSON</div>
       </div>
+      <% for (let i = 0; i < sales.length; i++) { %>
+        <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
+          <% if (i % 2 === 0) { %>
+            <div class = 'row table-row-small zebra'>
+          <% } else { %>
+            <div class = 'row table-row-small'>
+          <% } %>
+            <div class = 'col'><%= (sales[i].date).toLocaleDateString() %></div>
+            <div class = 'col'><%= helper.stringToCurrency(sales[i].amount) %></div>
+            <div class = 'col'><%= sales[i].employee.name %></div>
+          </div>
+        </a>
+      <% } %>
     </div>
   </div>
 </div>
