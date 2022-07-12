@@ -1,4 +1,5 @@
 const Customers = require('../models/customer.model')
+const Sales = require('../models/sale.model')
 
 const baseURL = '/customers'
 
@@ -27,17 +28,26 @@ const getCustomers = (req,res) => {
 }
 
 const showCustomer = (req,res) => {
+  let customer = {}
+  let sales = {}
   Customers.findById(req.params.id)
-    .then((customer) => {
+    .then((response) => {
+    customer = response
+    console.log(customer.sales)
+    Sales.find({_id: {$in: customer.sales}})
+      .then((response) => {
+      sales = response
       res.render('customers/showCustomer.ejs', 
       {
         customer, 
+        sales,
         baseURL,
         pageTitle: 'Customer',
         addNew: false,
         currentEmployee: req.session.currentEmployee
       })
     })
+  })
 }
 
 /*===============================================
