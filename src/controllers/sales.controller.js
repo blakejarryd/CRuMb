@@ -94,6 +94,10 @@ const newSale = (req, res) => {
       }
        Sales.create(req.body)
         .then((newSale) => {
+          Employees.findByIdAndUpdate(newSale.employee.id, {$push: {sales: newSale.id}})
+            .then((employee) => {})
+          Customers.findByIdAndUpdate(newSale.customer.id, {$push: {sales: newSale.id}})
+          .then((customer) => {})
           res.redirect(baseURL)
         })
     })
