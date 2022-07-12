@@ -33,7 +33,6 @@ const showCustomer = (req,res) => {
   Customers.findById(req.params.id)
     .then((response) => {
     customer = response
-    console.log(customer.sales)
     Sales.find({_id: {$in: customer.sales}})
       .then((response) => {
       sales = response

@@ -2,8 +2,10 @@ const e = require('express')
 const Customers = require('../models/customer.model')
 const Employees = require('../models/employee.model')
 const Sales = require('../models/sale.model')
+const helper = require('../utils/helper')
 
 const baseURL = '/sales'
+
 
 /*===============================================
 GET SALES
@@ -16,8 +18,9 @@ const getSalesJSON = (req,res) => {
 }
 
 const getSales = (req,res) => {
-  Sales.find()
+  Sales.find().sort({date:-1})
     .then((sales) => {
+      console.log(sales)
       res.render('sales/indexSales.ejs', 
       {
         sales, 

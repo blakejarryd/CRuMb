@@ -8,9 +8,26 @@
       <p>Last Name: <%= employee.lastName %> </p>
       <p>Phone: <%= employee.phone %> </p>
       <p>Email: <%= employee.email %> </p>
+      <div class = "row">
+        <div class = "col-2">
+          <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
+            <button type="button" class="btn btn-outline-primary">Edit</button>
+          </a>
+        </div>
+        <div class = "col-2">
+          <a class = 'text-decoration-none' href = "<%= baseURL %>">
+            <button type="button" class="btn btn-outline-secondary">Cancel</button>
+          </a>
+        </div>
+        <div class = "col-2">
+          <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+          </form>
+        </div>
+      </div>
     </div> 
     <div class = "col">
-      <h5 class = "pb-2">Sales</h5>
+      <h5 class = "pb-2"><%= employee.firstName + ' ' + employee.lastName %> Sales</h5>
       <div class = 'container'>
         <div class = 'row border font-weight-bold'>
           <div class = 'col'>DATE</div>
@@ -20,8 +37,7 @@
           <% for (sale of sales) { %>
             <a class = "text-decoration-none" href = "/sales/<%= sale.id %>">
               <div class = 'row border text-secondary'>
-                <% let date = sale.date.toDateString() %>
-                <div class = 'col'><%= date %></div>
+                <div class = 'col'><%= sale.date %></div>
                 <div class = 'col'><%= helper.stringToCurrency(sale.amount) %></div>
                 <div class = 'col'><%= sale.customer.name %></div>
               </div>
@@ -30,20 +46,5 @@
       </div>
     </div>
   </div> 
-  <div class = "row justify-content-around">
-    <div class = "col">
-      <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-      </a>
-      <a class = 'text-decoration-none' href = "<%= baseURL %>">
-        <button type="button" class="btn btn-outline-secondary">Cancel</button>
-      </a>
-    </div>
-    <div class = "col-10">
-      <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
-        <button type="button" class="btn btn-outline-danger">Delete</button>
-      </form>
-    </div>
-  </div>
 </div>
 <%- include ('../partials/footer.ejs') %>

@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const Customers = require('../models/customer.model')
 const Employees = require('../models/employee.model')
 
+
 const seedEmployees = require('./seedEmployees')
 const seedCustomers = require('./seedCustomers')
 
@@ -46,5 +47,6 @@ mongoose.connect(dbURL, () => {
   }
   console.log('customer seed data inserted')
 })
+
 
 

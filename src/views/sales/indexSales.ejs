@@ -9,8 +9,7 @@
       <% for (sale of sales) { %>
         <a class = "text-decoration-none" href = "<%= baseURL %>/<%= sale.id %>">
           <div class = 'row border text-secondary'>
-            <% let date = sale.date.toDateString() %>
-            <div class = 'col'><%= date %></div>
+            <div class = 'col'><%= (sale.date).toLocaleDateString() %></div>
             <div class = 'col'><%= sale.customer.name %></div>
             <div class = 'col'><%= helper.stringToCurrency(sale.amount) %></div>
             <div class = 'col'><%= sale.employee.name %></div>
