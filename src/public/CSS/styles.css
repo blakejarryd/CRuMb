@@ -26,6 +26,10 @@ h3 {
   box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
 }
 
+.mytable-small {
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+}
+
 a {
   color: #868D96
 }
@@ -44,6 +48,13 @@ a:hover {
   display: flex;
   align-items: center;
   height: 60px
+}
+
+.table-row-small {
+  background-color: #F0F2F4;
+  display: flex;
+  align-items: center;
+  height: 30px
 }
 
 .table-row:hover {

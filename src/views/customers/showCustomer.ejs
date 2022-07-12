@@ -22,18 +22,22 @@
     </div>
     <div class = "col">
       <h5 class = "pb-2"><%= customer.name %> Sales</h5>
-      <div class = 'container'>
-        <div class = 'row border font-weight-bold'>
+      <div class = 'container mytable-small'>
+        <div class = 'row table-header'>
           <div class = 'col'>DATE</div>
           <div class = 'col'>AMOUNT</div>
           <div class = 'col'>SALESPERSON</div>
         </div>
-          <% for (sale of sales) { %>
-            <a class = "text-decoration-none" href = "/sales/<%= sale.id %>">
-              <div class = 'row border text-secondary'>
-                <div class = 'col'><%= (sale.date).toLocaleDateString() %></div>
-                <div class = 'col'><%= helper.stringToCurrency(sale.amount) %></div>
-                <div class = 'col'><%= sale.employee.name %></div>
+        <% for (let i = 0; i < sales.length; i++) { %>
+            <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
+              <% if (i % 2 === 0) { %>
+                <div class = 'row table-row-small zebra'>
+              <% } else { %>
+                <div class = 'row table-row-small'>
+              <% } %>
+              <div class = 'col'><%= (sales[i].date).toLocaleDateString() %></div>
+              <div class = 'col'><%= helper.stringToCurrency(sales[i].amount) %></div>
+              <div class = 'col'><%= sales[i].employee.name %></div>
               </div>
             </a>
           <% } %>
