@@ -1,27 +1,37 @@
 <%- include ('../partials/header.ejs') %>
-</script>
 <div class = "container">
   <div class = "row">
     <div class = "col">
+      <div class = "row-md">
       <h5>Details</h5>
       <div class = "details">
       <p>Name: <%= customer.name %> </p>
       <p>Phone: <%= customer.phone %> </p>
       <p>Email: <%= customer.email %> </p>
       <p>Address: <%= customer.address %> </p>
-      <p>Contact Person: <%= customer.contactPerson %> </p>
+      <p>Contact: <%= customer.contactPerson %> </p>
       <form action = "<%= baseURL %>/<%= customer.id %>?_method=DELETE" method="POST">
         <a class ='text-decoration-none' href = "<%= baseURL %>/<%= customer.id %>/edit">
-          <button type="button" class="btn btn-outline-primary">Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
         </a>
         <% if (sales.length > 0) { %> 
           <span data-toggle="tooltip" data-placement="bottom" title="Can not delete a customer with linked sales">
-            <button disabled type="submit" class="btn btn-outline-danger">Delete</button>
+            <button disabled type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
           </span>
         <% } else { %> 
           <button type="submit" class="btn btn-outline-danger">Delete</button>
         <% } %>
       </form>
+      </div>
+      <div class = "row-md mt-3">
+        <h5>Customer Stats</h5>
+        <div class = "details">
+          <p>Total Sales: <%= helper.stringToCurrency(totalSales) %></p>
+          <p>Largest Sale: <a href = "/sales/<%= largestSale.id %>"><%= largestSale.date.toLocaleDateString() + ' - ' + helper.stringToCurrency(largestSale.amount) %> </a></p>
+          <p>Average Sale: <%= helper.stringToCurrency(averageSale) %></p>
+          <p>Top Salesperson: <a href = "/employees/<%= topSalesPerson.id %>"><%= topSalesPerson.name + ' - ' + helper.stringToCurrency(topSalesPerson.amount) + ' - ' + topSalesPerson.saleCount + ' sales' %></a></p>
+        </div>
+      </div>
     </div>
   </div>
   <div class = "col">
