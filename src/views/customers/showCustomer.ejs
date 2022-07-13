@@ -29,7 +29,9 @@
           <p>Total Sales: <%= helper.stringToCurrency(totalSales) %></p>
           <p>Largest Sale: <a href = "/sales/<%= largestSale.id %>"><%= largestSale.date.toLocaleDateString() + ' - ' + helper.stringToCurrency(largestSale.amount) %> </a></p>
           <p>Average Sale: <%= helper.stringToCurrency(averageSale) %></p>
-          <p>Top Salesperson: <a href = "/employees/<%= topSalesPerson.id %>"><%= topSalesPerson.name + ' - ' + helper.stringToCurrency(topSalesPerson.amount) + ' - ' + topSalesPerson.saleCount + ' sales' %></a></p>
+          <p>Top Salesperson: <a href = "/employees/<%= topSalesPerson.id %>"><%= topSalesPerson.name %></p></a>
+          <p>&nbsp&nbsp&nbsp&nbsp Sales: <%= helper.stringToCurrency(topSalesPerson.amount) %></p>
+          <p>&nbsp&nbsp&nbsp&nbsp Sales Count: <%= topSalesPerson.saleCount %></p>
         </div>
       </div>
     </div>

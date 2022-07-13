@@ -2,27 +2,40 @@
 <div class = "container">
   <div class = "row">
     <div class = "col">
-    <h5>Details</h5>
+      <div class = "row-md">
+      <h5>Details</h5>
       <div class = "details">
-      <p>Username: <%= employee.username %> </p>
-      <p>First Name: <%= employee.firstName %> </p>
-      <p>Last Name: <%= employee.lastName %> </p>
-      <p>Phone: <%= employee.phone %> </p>
-      <p>Email: <%= employee.email %> </p>
-      <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
-        <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
-          <button type="button" class="btn btn-outline-primary">Edit</button>
-        </a>
-        <% if (sales.length > 0) { %> 
-          <span data-toggle="tooltip" data-placement="bottom" title="Can not delete an employee with linked sales">
-            <button disabled type="submit" class="btn btn-outline-danger">Delete</button>
-          </span>
-        <% } else { %> 
-          <button type="submit" class="btn btn-outline-danger">Delete</button>
-        <% } %>
-      </form>
-    </div>
-  </div> 
+        <p>Username: <%= employee.username %> </p>
+        <p>First Name: <%= employee.firstName %> </p>
+        <p>Last Name: <%= employee.lastName %> </p>
+        <p>Phone: <%= employee.phone %> </p>
+        <p>Email: <%= employee.email %> </p>
+        <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
+          <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
+            <button type="button" class="btn btn-outline-primary">Edit</button>
+          </a>
+          <% if (sales.length > 0) { %> 
+            <span data-toggle="tooltip" data-placement="bottom" title="Can not delete an employee with linked sales">
+              <button disabled type="submit" class="btn btn-outline-danger">Delete</button>
+            </span>
+          <% } else { %> 
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
+          <% } %>
+        </form>
+      </div>
+      <div class = "row-md mt-3">
+        <h5>Employee Stats</h5>
+        <div class = "details">
+          <p>Total Sales: <%= helper.stringToCurrency(totalSales) %></p>
+          <p>Largest Sale: <a href = "/sales/<%= largestSale.id %>"><%= largestSale.date.toLocaleDateString() + ' - ' + helper.stringToCurrency(largestSale.amount) %> </a></p>
+          <p>Average Sale: <%= helper.stringToCurrency(averageSale) %></p>
+          <p>Top Customer: <a href = "/customers/<%= topCustomer.id %>"><%= topCustomer.name %></p></a>
+          <p>&nbsp&nbsp&nbsp&nbsp Sales: <%= helper.stringToCurrency(topCustomer.amount) %></p>
+          <p>&nbsp&nbsp&nbsp&nbsp Sales Count: <%= topCustomer.saleCount %></p>
+        </div>
+      </div>
+    </div> 
+  </div>
   <div class = "col">
     <div class = "container d-flex justify-content-between align-items-center p-0">
       <h5>Sales</h5>

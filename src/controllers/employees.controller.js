@@ -1,6 +1,8 @@
 const Employees = require('../models/employee.model')
 const Sales = require('../models/sale.model')
 
+const stats = require('../utils/stats')
+
 const baseURL = '/employees'
 
 /*===============================================
@@ -36,10 +38,18 @@ const showEmployee = (req,res) => {
     Sales.find({_id: {$in: employee.sales}}).sort({date:-1})
       .then((response) => {
       sales = response
+      let totalSales = stats.totalSales(sales)
+      let largestSale = stats.largestSale(sales)
+      let averageSale = stats.averageSale(sales)
+      let topCustomer = stats.topCustomer(sales)
       res.render('employees/showEmployee.ejs', 
       {
         employee, 
         sales,
+        totalSales,
+        largestSale,
+        averageSale,
+        topCustomer,
         baseURL,
         pageTitle: `${employee.firstName} ${employee.lastName} Profile`,
         addNew: false,

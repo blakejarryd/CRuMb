@@ -58,6 +58,33 @@ const topSalePerson = (sales) => {
   return topEmployee
 }
 
+const topCustomer = (sales) => {
+  let customers = {}
+  for (sale of sales) {
+    let customerFound = 0
+    for (customer in customers) {
+      if (sale.customer.id == customer) {
+        customers[sale.customer.id].amount += sale.amount
+        customers[sale.customer.id].saleCount++
+        customerFound = 1
+      }
+    } 
+    if (customerFound === 0) {
+      customers[sale.customer.id] = {name: sale.customer.name, saleCount: 1, amount: sale.amount}
+    }
+  }
+  let topAmount = 0
+  let topCustomer = {} 
+  for (customer in customers) {
+    if(customers[customer]['amount'] > topAmount) {
+      topAmount = customers[customer]['amount']
+      topCustomer = customers[customer]
+      topCustomer.id = customer
+    }
+  }
+  return topCustomer
+}
+
 
 
 
@@ -66,5 +93,6 @@ module.exports = {
   totalSales,
   largestSale,
   averageSale,
-  topSalePerson
+  topSalePerson,
+  topCustomer
 }
