@@ -152,9 +152,19 @@ const editSale = (req, res) => {
 DELETE SALE
 ================================================*/
 const deleteSale = (req, res) => {
+  let customerID = ''
+  let employeeID = ''
+  let saleID = ''
   Sales.findByIdAndDelete(req.params.id) 
     .then((deletedSale) => {
+    customerID = deletedSale.customer.id
+    employeeID = deletedSale.employee.id
+    saleID = deletedSale._id
     res.redirect(baseURL)
+    })
+    .then(() => {
+      Customers.findByIdAndUpdate({customerID},{$pull: {sales: saleID}})
+      Employees.findByIdAndUpdate({employeeID},{$pull: {sales: saleID}})
     })
 }
 
