@@ -1,42 +1,42 @@
 module.exports = [
   {
-    username: "johnsmith",
-    firstName: "John",
-    lastName: "Smith",
+    username: "CRuMb_admin",
+    firstName: "Viktor",
+    lastName: "Krum",
     phone: "0404 614 456",
-    email: "johnsmith@internet.com",
+    email: "bulgarianquidditch@internet.com",
     sales: []
   },
   {
-    username: "maryjane",
-    firstName: "Mary",
-    lastName: "Jane",
+    username: "ewoods",
+    firstName: "Elle",
+    lastName: "Woods",
     phone: "0404 720 143",
-    email: "maryjane@internet.com",
+    email: "illicitbrunette@internet.com",
     sales: []
   },
   {
-    username: "jimbo",
-    firstName: "Jim",
-    lastName: "Smithers",
+    username: "baxter",
+    firstName: "Ron",
+    lastName: "Burgundy",
     phone: "0424 916 621",
-    email: "jimsmithers@internet.com",
+    email: "richmahogany@internet.com",
     sales: []
   },
   {
-    username: "rbell",
-    firstName: "Rachel",
-    lastName: "Bell",
+    username: "classified",
+    firstName: "Gracie",
+    lastName: "Hart",
     phone: "0431 745 124",
-    email: "rachelbell@internet.com",
+    email: "worldpeace@internet.com",
     sales: []
   },
   {
-    username: "n_smith",
-    firstName: "Nick",
-    lastName: "Smith",
+    username: "michaelscarn",
+    firstName: "Michael",
+    lastName: "Scott",
     phone: "0413 735 043",
-    email: "nicksmith@internet.com",
+    email: "ihatetoby@internet.com",
     sales: []
   }
 ]

@@ -35,11 +35,13 @@
       </div>
     </div>
   </nav>
+  <main>
+  <div class = "container-wrapper">
   <header class = 'container header pt-4 pb-4 d-flex justify-content-between'>
       <h3><%= pageTitle %></h3>
       <% if (addNew) { %>
       <a href = "<%=baseURL%>/new">
-        <button type="button" class="btn btn-outline-primary">New <%=pageTitle.slice(0,-1)%></button>
+        <button type="button" class="btn btn-outline-secondary">New <%=pageTitle.slice(0,-1)%></button>
       </a>
       <% } %>
   </header>

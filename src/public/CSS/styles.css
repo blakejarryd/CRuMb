@@ -1,11 +1,16 @@
 body {
   font-family: 'Quicksand', sans-serif;
-  background-color: #CFD4DA;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: url("/Images/366259.jpeg") no-repeat center center fixed;
+  background-size: cover;
 }
+
 
 nav {
   background-color: #2368A2;
-
 }
 
 .nav-link, .logout {
@@ -14,6 +19,33 @@ nav {
 
 .nav-item:hover, .logout:hover {
   background-color: #1B4971;
+}
+
+
+.container-wrapper {
+  background-color: #CFD4DA;
+  max-width: 950px;
+  padding: 0 35px 35px 35px;
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+}
+
+.login-wrapper {
+  background-color: #CFD4DA;
+  padding: 0 35px 35px 35px;
+  max-width: 500px;
+  opacity: 0.9;
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+}
+
+
+.container {
+  max-width: 900px;
 }
 
 h3 {
@@ -46,15 +78,18 @@ a:hover {
 .table-row {
   background-color: #F0F2F4;
   display: flex;
+  justify-content: start;
   align-items: center;
-  height: 60px
+  flex-basis: auto;
+  padding: 6px;
 }
 
 .table-row-small {
   background-color: #F0F2F4;
   display: flex;
   align-items: center;
-  height: 30px
+  flex-basis: auto;
+  padding: 4px;
 }
 
 .table-row:hover {
@@ -77,4 +112,7 @@ h5 {
   padding-top: 8px;
 }
 
-
+.login {
+  max-width: 400px;
+  margin-top: 50px;
+}

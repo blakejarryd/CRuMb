@@ -11,9 +11,9 @@
           <p>Contact Person: <a href = "/employees/<%= sale.employee.id %>"><%= sale.employee.name %> </a></p>
           <form action = "<%= baseURL %>/<%= sale.id %>?_method=DELETE" method="POST">
             <a class ='text-decoration-none' href = "<%= baseURL %>/<%= sale.id %>/edit">
-              <button type="button" class="btn btn-outline-primary">Edit</button>
+              <button type="button" class="btn btn-sm  btn-outline-primary">Edit</button>
             </a>
-            <button type="submit" class="btn btn-outline-danger">Delete</button>
+            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
           </form>
         </div>
       </div>

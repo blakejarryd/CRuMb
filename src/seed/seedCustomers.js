@@ -10,7 +10,7 @@ module.exports = [
   {
     name: "Campbell Brokers",
     phone: "02 9836 7823",
-    email: "sales_cambell@internet.com",
+    email: "campbell@internet.com",
     address: "12/120 George Street, Sydney VIC 2000",
     contactPerson: "Liam Campbell",
     sales: []

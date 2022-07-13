@@ -62,7 +62,6 @@ const generateSales = (num) => {
           })
       })
     }
-    console.log('seed complete')
   })
 }
 
