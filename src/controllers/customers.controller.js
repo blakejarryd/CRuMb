@@ -61,7 +61,7 @@ const showCustomer = (req,res) => {
 }
 
 /*===============================================
-CREATE Customer
+CREATE CUSTOMER
 ================================================*/
 const newCustomerForm = (req, res) => {
   res.render('customers/newCustomer.ejs', 
@@ -81,7 +81,7 @@ const newCustomer = (req, res) => {
 }
 
 /*===============================================
-EDIT USER
+EDIT CUSTOMER
 ================================================*/
 const editCustomerForm = (req, res) => {
   Customers.findById(req.params.id)
@@ -105,7 +105,7 @@ const editCustomer = (req, res) => {
 }
 
 /*===============================================
-DELETE USER
+DELETE CUSTOMER
 ================================================*/
 const deleteCustomer = (req, res) => {
   Customers.findByIdAndDelete(req.params.id) 

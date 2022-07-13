@@ -17,6 +17,14 @@ nav {
   color: #AAD4F5;
 }
 
+li {
+  border-radius: 5px;
+}
+
+.logout {
+  border: none
+}
+
 .nav-item:hover, .logout:hover {
   background-color: #1B4971;
 }
