@@ -52,8 +52,9 @@ const showSale = (req,res) => {
 CREATE SALE
 ================================================*/
 const newSaleForm = (req, res) => {
-  customers = []
-  employees = []
+  let customers = []
+  let employees = []
+  let today = new Date().toLocaleDateString('en-US')
   Customers.find({}, {name: 1})
     .then((result) => {
       customers = result
@@ -62,6 +63,8 @@ const newSaleForm = (req, res) => {
       Employees.find({}, {firstName: 1, lastName: 1})
       .then((result) => {
         employees = result
+        //console.log(req.session.currentEmployee)
+        //console.log(employees)
       })
       .then(() => {
         res.render('sales/newSale.ejs', 
@@ -70,6 +73,7 @@ const newSaleForm = (req, res) => {
           customers,
           employees,
           pageTitle: 'New Sale',
+          today,
           addNew: false,
           currentEmployee: req.session.currentEmployee
         })

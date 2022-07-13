@@ -3,7 +3,7 @@
   <form action = "<%=baseURL%>" method = "post">
     <div class="form-outline mb-4">
       <label class="form-label" for="date">Date</label>
-      <input class="form-control" type="date" name = "date" />
+      <input class="form-control date-picker" type="date" name = "date" value = "<%= today %>"/>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="customer">Customer</label>
@@ -17,9 +17,12 @@
     <div class="form-outline mb-4">
       <label class="form-label" for="employee">Sales Person</label>
       <select class = "form-select" name="employee">
-        <option selected></option>
         <% for (employee of employees) { %>
-          <option value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+          <% if (employee.firstName + employee.lastName  ===  currentEmployee.firstName + currentEmployee.lastName) { %>
+            <option selected value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+            <% } else { %>
+            <option value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+            <% } %>
         <% } %>
       </select>
     </div>
@@ -39,5 +42,8 @@
     </div>
   </form>
 </div>
-
+<script>
+  // let date = new Date().toLocaleDateString('en-US')
+  // document.querySelector(".date-picker").value = date
+</script>
 <%- include ('../partials/footer.ejs') %>
