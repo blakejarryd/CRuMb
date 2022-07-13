@@ -114,6 +114,7 @@ a:hover {
   padding: 10px;
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.3);
+  position: relative;
 }
 
 h5 {
@@ -123,4 +124,24 @@ h5 {
 .login {
   max-width: 400px;
   margin-top: 50px;
+}
+
+.line{
+  width: 100%;
+  border-top: 2px solid #CFD4DA;
+  }
+
+p {
+  margin-bottom: 10px;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.top {
+  margin-top: 10px;
+}
+.top p {
+  margin-bottom: 3px
 }

@@ -27,11 +27,15 @@
         <h5>Customer Stats</h5>
         <div class = "details">
           <p>Total Sales: <%= helper.stringToCurrency(totalSales) %></p>
-          <p>Largest Sale: <a href = "/sales/<%= largestSale.id %>"><%= largestSale.date.toLocaleDateString() + ' - ' + helper.stringToCurrency(largestSale.amount) %> </a></p>
+          <p>Largest Sale: <a class = "no-underline" href = "/sales/<%= largestSale.id %>"><%=helper.stringToCurrency(largestSale.amount) + ' on ' + largestSale.date.toLocaleDateString() %></a></p>
           <p>Average Sale: <%= helper.stringToCurrency(averageSale) %></p>
-          <p>Top Salesperson: <a href = "/employees/<%= topSalesPerson.id %>"><%= topSalesPerson.name %></p></a>
-          <p>&nbsp&nbsp&nbsp&nbsp Sales: <%= helper.stringToCurrency(topSalesPerson.amount) %></p>
-          <p>&nbsp&nbsp&nbsp&nbsp Sales Count: <%= topSalesPerson.saleCount %></p>
+          <div class="line"></div>
+          <div class = "top">
+            <p>Top Salesperson: </p>
+            <a class = "no-underline" href = "/employees/<%= topSalesPerson.id %>"><p>&nbsp&nbsp&nbsp&nbsp <%= topSalesPerson.name %></p></a>
+            <p>&nbsp&nbsp&nbsp&nbsp Sales: <%= helper.stringToCurrency(topSalesPerson.amount) %></p>
+            <p>&nbsp&nbsp&nbsp&nbsp Sales Count: <%= topSalesPerson.saleCount %></p>
+          </div>
         </div>
       </div>
     </div>
