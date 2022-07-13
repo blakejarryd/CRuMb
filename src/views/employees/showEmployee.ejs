@@ -24,27 +24,31 @@
     </div>
   </div> 
   <div class = "col">
-    <h5>Sales</h5>
-    <div class = 'container mytable-small'>
-      <div class = 'row table-header'>
-        <div class = 'col-4'>DATE</div>
-        <div class = 'col-3'>AMOUNT</div>
-        <div class = 'col-5'>CUSTOMER</div>
-      </div>
-      <% for (let i = 0; i < sales.length; i++) { %>
-        <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
-          <% if (i % 2 === 0) { %>
-            <div class = 'row table-row-small zebra'>
-          <% } else { %>
-            <div class = 'row table-row-small'>
-          <% } %>
-            <div class = 'col-4'><%= (sales[i].date).toLocaleDateString() %></div>
-            <div class = 'col-3'><%= helper.stringToCurrency(sales[i].amount) %></div>
-            <div class = 'col-5'><%= sales[i].customer.name %></div>
-          </div>
-        </a>
-      <% } %>
-    </div>
+    <div class = "container d-flex justify-content-between align-items-center p-0">
+      <h5>Sales</h5>
+      <a href = "/sales/new?employee=<%=employee.id%>">
+        <button type="button" class="btn btn-sm btn-outline-primary">New Sale</button>
+      </a>
   </div>
-</div> 
+  <div class = 'container mytable-small'>
+    <div class = 'row table-header'>
+      <div class = 'col-4'>DATE</div>
+      <div class = 'col-3'>AMOUNT</div>
+      <div class = 'col-5'>CUSTOMER</div>
+    </div>
+    <% for (let i = 0; i < sales.length; i++) { %>
+      <a class = "text-decoration-none" href = "/sales/<%= sales[i].id %>">
+        <% if (i % 2 === 0) { %>
+          <div class = 'row table-row-small zebra'>
+        <% } else { %>
+          <div class = 'row table-row-small'>
+        <% } %>
+          <div class = 'col-4'><%= (sales[i].date).toLocaleDateString() %></div>
+          <div class = 'col-3'><%= helper.stringToCurrency(sales[i].amount) %></div>
+          <div class = 'col-5'><%= sales[i].customer.name %></div>
+        </div>
+      </a>
+    <% } %>
+  </div>
+</div>
 <%- include ('../partials/footer.ejs') %>

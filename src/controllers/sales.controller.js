@@ -55,11 +55,13 @@ const newSaleForm = (req, res) => {
   let customers = []
   let employees = []
   let today = new Date().toLocaleDateString('en-CA')
-  //console.log(req.query)
+  let selectedEmployee = {}
+  if (req.query.employee) {
+    selectedEmployee = req.query.employee
+  } else {selectedEmployee = req.session.currentEmployee._id}
   Customers.find({}, {name: 1})
     .then((result) => {
       customers = result
-      //console.log(customers)
     })
     .then(() => {
       Employees.find({}, {firstName: 1, lastName: 1})
@@ -72,11 +74,12 @@ const newSaleForm = (req, res) => {
           baseURL,
           customers,
           selectedCustomer: req.query.customer,
+          selectedEmployee,
           employees,
           pageTitle: 'New Sale',
           today,
           addNew: false,
-          currentEmployee: req.session.currentEmployee
+          currentEmployee: req.session.currentEmployee._id
         })
     })
   })
