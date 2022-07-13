@@ -63,8 +63,6 @@ const newSaleForm = (req, res) => {
       Employees.find({}, {firstName: 1, lastName: 1})
       .then((result) => {
         employees = result
-        //console.log(req.session.currentEmployee)
-        //console.log(employees)
       })
       .then(() => {
         res.render('sales/newSale.ejs', 

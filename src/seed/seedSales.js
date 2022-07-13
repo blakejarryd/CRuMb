@@ -28,17 +28,9 @@ const randomAmount = () => {
   return Math.ceil(Math.random() * 20000)
 }
 
-// mongoose.connect(dbURL, () => {
-// Customers.find()
-//   .then((response) => {
-//   console.log(response)
-//   })
-// })
-
 const generateSales = (num) => {
   mongoose.connect(dbURL, () => {
     for (let i = 0; i < num; i++) {
-      console.log(i)
       let sale = {}
       let randomCustomer = {}
       let randomEmployee = {}
@@ -74,17 +66,12 @@ const generateSales = (num) => {
   })
 }
 
-generateSales(20)
+module.exports = {
+  generateSales
+}
 
 
-// mongoose.connect(dbURL, () => {
-//   for (let i = 0; i < 10; i++) {
-//     let sale = generateSale()
-//     console.log(sale)
-//     Sales.create(sale)
-//       .then(() => {})
-//   }
-// })
+
 
 
 

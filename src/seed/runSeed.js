@@ -3,50 +3,42 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const Customers = require('../models/customer.model')
 const Employees = require('../models/employee.model')
+const Sales = require('../models/sale.model')
+
 
 
 const seedEmployees = require('./seedEmployees')
 const seedCustomers = require('./seedCustomers')
+const seedSales = require('./seedSales')
 
 const dbURL = process.env.MONGODB_URL
 
-//Insert Employee Seed Data
 mongoose.connect(dbURL, () => {
-  if (Employees.collection) {
-    Employees.collection.drop()
-      .then(() => {
+  Promise.all([
+    Employees.collection.drop(),
+    Customers.collection.drop(),
+    Sales.collection.drop(),
+  ]).then(() => {
+    Promise.all([
       Employees.insertMany(seedEmployees)
-        .then(() => {
-          mongoose.connection.close()
-        })
-    })
-  } else {
-    Employees.insertMany(seedEmployees)
       .then(() => {
-        mongoose.connection.close()
-    })
-  }
-  console.log('employee seed data inserted')
-})
-
-//Insert Client Seed Data
-mongoose.connect(dbURL, () => {
-  if (Customers.collection) {
-    Customers.collection.drop()
-      .then(() => {
+        console.log('employee seed data inserted')
+      }),
       Customers.insertMany(seedCustomers)
-        .then(() => {
-          mongoose.connection.close()
-        })
-    })
-  } else {
-    Customers.insertMany(seedCustomers)
       .then(() => {
-        mongoose.connection.close()
+        console.log('customer seed data inserted')
+      }),
+    ]).then(() => {
+      seedSales.generateSales(100)
+    }).then(() => {
+      console.log('sales seed data inserted')
     })
-  }
-  console.log('customer seed data inserted')
+  })
 })
+  
+    
+
+
 
 
 
