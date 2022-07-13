@@ -9,11 +9,17 @@
       <p>Last Name: <%= employee.lastName %> </p>
       <p>Phone: <%= employee.phone %> </p>
       <p>Email: <%= employee.email %> </p>
-      <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST"></form>
+      <form action = "<%= baseURL %>/<%= employee.id %>?_method=DELETE" method="POST">
         <a class ='text-decoration-none' href = "<%= baseURL %>/<%= employee.id %>/edit">
           <button type="button" class="btn btn-outline-primary">Edit</button>
         </a>
-        <button type="submit" class="btn btn-outline-danger">Delete</button>
+        <% if (sales.length > 0) { %> 
+          <span data-toggle="tooltip" data-placement="bottom" title="Can not delete an employee with linked sales">
+            <button disabled type="submit" class="btn btn-outline-danger">Delete</button>
+          </span>
+        <% } else { %> 
+          <button type="submit" class="btn btn-outline-danger">Delete</button>
+        <% } %>
       </form>
     </div>
   </div> 
