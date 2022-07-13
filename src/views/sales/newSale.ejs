@@ -8,9 +8,12 @@
     <div class="form-outline mb-4">
       <label class="form-label" for="customer">Customer</label>
       <select class = "form-select" name="customer">
-        <option selected></option>
         <% for (customer of customers) { %>
+          <% if (customer.id == selectedCustomer) { %>
+            <option selected value = "<%= customer.id %>"> <%= customer.name %> </option>
+            <% } else { %>
           <option value = "<%= customer.id %>"> <%= customer.name %> </option>
+          <% } %>
         <% } %>
       </select>
     </div>
@@ -43,7 +46,5 @@
   </form>
 </div>
 <script>
-  // let date = new Date().toLocaleDateString('en-US')
-  // document.querySelector(".date-picker").value = date
 </script>
 <%- include ('../partials/footer.ejs') %>

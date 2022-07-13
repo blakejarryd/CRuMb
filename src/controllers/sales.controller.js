@@ -54,10 +54,12 @@ CREATE SALE
 const newSaleForm = (req, res) => {
   let customers = []
   let employees = []
-  let today = new Date().toLocaleDateString('en-US')
+  let today = new Date().toLocaleDateString('en-CA')
+  //console.log(req.query)
   Customers.find({}, {name: 1})
     .then((result) => {
       customers = result
+      //console.log(customers)
     })
     .then(() => {
       Employees.find({}, {firstName: 1, lastName: 1})
@@ -69,6 +71,7 @@ const newSaleForm = (req, res) => {
         {
           baseURL,
           customers,
+          selectedCustomer: req.query.customer,
           employees,
           pageTitle: 'New Sale',
           today,
