@@ -41,7 +41,7 @@ const showCustomer = (req,res) => {
         customer, 
         sales,
         baseURL,
-        pageTitle: `${customer.name} Profile`,
+        pageTitle: `${customer.name}`,
         addNew: false,
         helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
