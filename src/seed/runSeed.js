@@ -29,7 +29,7 @@ mongoose.connect(dbURL, () => {
         console.log('customer seed data inserted')
       }),
     ]).then(() => {
-      seedSales.generateSales(10)
+      seedSales.generateSales(107)
     }).then(() => {
       console.log('sales seed data inserted')
     })

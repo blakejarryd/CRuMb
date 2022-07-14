@@ -6,7 +6,9 @@ const helper = require('../utils/helper')
 
 const baseURL = '/sales'
 
-
+//use to track entry point to new sale form page
+let referrer = ''
+let priorReferrer = ''
 /*===============================================
 GET SALES
 ================================================*/
@@ -18,6 +20,11 @@ const getSalesJSON = (req,res) => {
 }
 
 const getSales = (req,res) => {
+  if (!req.query.page) {
+    req.query.page = 1
+  }
+  priorReferrer = referrer
+  referrer = req.get('Referrer')
   let pageNumber = Number(req.query.page)
   let skipAmount = 20 * (pageNumber - 1)
   Sales.find({},{},{skip: skipAmount, limit:20}).sort({date:-1})
@@ -26,6 +33,7 @@ const getSales = (req,res) => {
       {
         sales, 
         baseURL,
+        referrer,
         pageTitle: 'Sales',
         addNew: true,
         pageNumber,
@@ -36,13 +44,15 @@ const getSales = (req,res) => {
 }
 
 const showSale = (req,res) => {
-  let sale = {}
+  priorReferrer = referrer
+  referrer = req.get('Referrer')
   Sales.findById(req.params.id)
     .then((sale) => {
       res.render('sales/showSale.ejs', 
       {
         sale, 
         baseURL,
+        referrer,
         pageTitle: 'Sale',
         addNew: false,
         helper: require('../utils/helper'),
@@ -55,7 +65,8 @@ const showSale = (req,res) => {
 CREATE SALE
 ================================================*/
 const newSaleForm = (req, res) => {
-  let referrer = req.get('Referrer')
+  priorReferrer = referrer
+  referrer = req.get('Referrer')
   let customers = []
   let employees = []
   let today = new Date().toLocaleDateString('en-CA')
@@ -115,7 +126,7 @@ const newSale = (req, res) => {
             .then((employee) => {})
           Customers.findByIdAndUpdate(newSale.customer.id, {$push: {sales: newSale.id}})
           .then((customer) => {})
-          res.redirect("/customers/" + newSale.customer.id)
+          res.redirect(referrer)
         })
     })
 }
@@ -123,6 +134,8 @@ const newSale = (req, res) => {
 EDIT SALE
 ================================================*/
 const editSaleForm = (req, res) => {
+  priorReferrer = referrer
+  referrer = req.get('Referrer')
   customers = []
   employees = []
   Customers.find({}, {name: 1})
@@ -144,6 +157,7 @@ const editSaleForm = (req, res) => {
               customers,
               employees,
               baseURL,
+              referrer,
               pageTitle: 'Edit Sale',
               addNew: false,
               currentEmployee: req.session.currentEmployee
@@ -194,7 +208,7 @@ const editSaleForm = (req, res) => {
           .then((employee) => {})
           Customers.findByIdAndUpdate(updatedSale.customer.id, {$push: {sales: updatedSale.id}})
           .then((customer) => {})
-          res.redirect("/customers/" + updatedSale.customer.id)
+          res.redirect(referrer)
         })
       })
   }
@@ -212,7 +226,7 @@ const deleteSale = (req, res) => {
     customerID = deletedSale.customer.id
     employeeID = deletedSale.employee.id
     saleID = deletedSale._id
-    res.redirect("/customers/" + deletedSale.customer.id)
+    res.redirect(priorReferrer)
     })
     .then(() => {
       Customers.findByIdAndUpdate({customerID},{$pull: {sales: saleID}})
