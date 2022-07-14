@@ -86,7 +86,7 @@ EDIT USER
 const editEmployeeForm = (req, res) => {
   Employees.findById(req.params.id)
     .then((employee) => {
-      res.render(('Employees/editEmployee.ejs'), 
+      res.render(('employees/editEmployee.ejs'), 
       {
         employee, 
         baseURL,
