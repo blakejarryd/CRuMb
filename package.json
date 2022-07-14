@@ -9,6 +9,9 @@
   "author": "Blake Johnston",
   "license": "ISC",
   "description": "",
+  "engines": {
+    "node": "18.4.0"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongodb-session": "^3.1.1",

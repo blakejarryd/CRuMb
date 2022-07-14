@@ -18,7 +18,11 @@ const getSalesJSON = (req,res) => {
 }
 
 const getSales = (req,res) => {
-  Sales.find().sort({date:-1})
+  console.log(req.query)
+  let pageNumber = Number(req.query.page)
+  let skipAmount = 20 * (pageNumber - 1)
+  console.log(pageNumber)
+  Sales.find({},{},{skip: skipAmount, limit:20}).sort({date:-1})
     .then((sales) => {
       res.render('sales/indexSales.ejs', 
       {
@@ -26,6 +30,7 @@ const getSales = (req,res) => {
         baseURL,
         pageTitle: 'Sales',
         addNew: true,
+        pageNumber,
         helper: require('../utils/helper'),
         currentEmployee: req.session.currentEmployee
       })

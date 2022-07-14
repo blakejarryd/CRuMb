@@ -13,8 +13,16 @@ nav {
   background-color: #2368A2;
 }
 
-.nav-link, .logout {
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link, .logout, .my-nav {
   color: #AAD4F5;
+  text-decoration: none;
+  margin: auto;
+  padding: 10px;
 }
 
 li {
@@ -27,6 +35,11 @@ li {
 
 .nav-item:hover, .logout:hover {
   background-color: #1B4971;
+}
+
+.col {
+  margin-left: 4px;
+  margin-right: 4px
 }
 
 
@@ -66,15 +79,16 @@ h3 {
   box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
 }
 
+
 .mytable-small {
   box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
 }
 
-a {
+a, .page-link {
   color: #868D96
 }
 
-a:hover {
+a:hover, .page-link:hover {
   color: #64A2D8
 }
 
@@ -144,4 +158,10 @@ p {
 }
 .top p {
   margin-bottom: 3px
+}
+
+.page {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
 }

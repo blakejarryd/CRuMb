@@ -21,6 +21,27 @@
         </a>
       <% } %>
   </div>
+    <div class = "page">
+    <ul class="pagination">
+      <% if (pageNumber > 1) { %>
+      <li class="page-item">
+        <a class="page-link" href="/sales?page=<%=pageNumber - 1%>" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only"></span>
+        </a>
+      </li>
+      <% } %>
+      <li class="page-item"><a class="page-link"><%=pageNumber%></a></li>
+      <% if (sales.length === 20) { %>
+      <li class="page-item">
+        <a class="page-link" href="/sales?page=<%=pageNumber + 1%>" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only"></span>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
   <script>
   </script>
 <%- include ('../partials/footer.ejs') %>

@@ -7,30 +7,30 @@ const helper = require('../utils/helper')
 sales.use(helper.isLoggedIn)
 
 /*================================================================
-/Users Routes
+/SALES ROUTES
 ================================================================*/
-//New User Form
+//New Sale Form
 sales.get('/new', salesController.newSaleForm)
 
-//Create User
+//Create Sale
 sales.post('/', salesController.newSale)
 
-//Users List JSON
+//Sales List JSON
 sales.get('/json', salesController.getSalesJSON)
 
-//Users Index
+//Sales Index
 sales.get('/', salesController.getSales)
 
-//View User 
+//View Sale 
 sales.get('/:id', salesController.showSale)
 
-//Edit User Form
+//Edit Sale Form
 sales.get('/:id/edit', salesController.editSaleForm)
 
-//Edit User Form
+//Edit Sale Form
 sales.put('/:id', salesController.editSale)
 
-//Delete User
+//Delete Sale
 sales.delete('/:id', salesController.deleteSale)
 
 module.exports = sales
