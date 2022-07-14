@@ -8,7 +8,6 @@ const baseURL = '/sales'
 
 //use to track entry point to new sale form page
 let referrer = ''
-let priorReferrer = ''
 /*===============================================
 GET SALES
 ================================================*/
@@ -23,7 +22,6 @@ const getSales = (req,res) => {
   if (!req.query.page) {
     req.query.page = 1
   }
-  priorReferrer = referrer
   referrer = req.get('Referrer')
   let pageNumber = Number(req.query.page)
   let skipAmount = 20 * (pageNumber - 1)
@@ -44,7 +42,6 @@ const getSales = (req,res) => {
 }
 
 const showSale = (req,res) => {
-  priorReferrer = referrer
   referrer = req.get('Referrer')
   Sales.findById(req.params.id)
     .then((sale) => {
@@ -65,7 +62,6 @@ const showSale = (req,res) => {
 CREATE SALE
 ================================================*/
 const newSaleForm = (req, res) => {
-  priorReferrer = referrer
   referrer = req.get('Referrer')
   let customers = []
   let employees = []
@@ -134,7 +130,6 @@ const newSale = (req, res) => {
 EDIT SALE
 ================================================*/
 const editSaleForm = (req, res) => {
-  priorReferrer = referrer
   referrer = req.get('Referrer')
   customers = []
   employees = []
@@ -226,7 +221,7 @@ const deleteSale = (req, res) => {
     customerID = deletedSale.customer.id
     employeeID = deletedSale.employee.id
     saleID = deletedSale._id
-    res.redirect(priorReferrer)
+    res.redirect("/sales")
     })
     .then(() => {
       Customers.findByIdAndUpdate({customerID},{$pull: {sales: saleID}})
