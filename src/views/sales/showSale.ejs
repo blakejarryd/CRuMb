@@ -8,7 +8,7 @@
           <p>Customer: <a href = "/customers/<%= sale.customer.id %>"><%= sale.customer.name %> </a></p>
           <p>Amount: <%= helper.stringToCurrency(sale.amount) %> </p>
           <p>Description: <%= sale.description %> </p>
-          <p>Contact Person: <a href = "/employees/<%= sale.employee.id %>"><%= sale.employee.name %> </a></p>
+          <p>Sales Person: <a href = "/employees/<%= sale.employee.id %>"><%= sale.employee.name %> </a></p>
           <form action = "<%= baseURL %>/<%= sale.id %>?_method=DELETE" method="POST">
             <a class ='text-decoration-none' href = "<%= baseURL %>/<%= sale.id %>/edit">
               <button type="button" class="btn btn-sm  btn-outline-primary">Edit</button>

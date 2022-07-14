@@ -18,10 +18,8 @@ const getSalesJSON = (req,res) => {
 }
 
 const getSales = (req,res) => {
-  console.log(req.query)
   let pageNumber = Number(req.query.page)
   let skipAmount = 20 * (pageNumber - 1)
-  console.log(pageNumber)
   Sales.find({},{},{skip: skipAmount, limit:20}).sort({date:-1})
     .then((sales) => {
       res.render('sales/indexSales.ejs', 
@@ -57,6 +55,7 @@ const showSale = (req,res) => {
 CREATE SALE
 ================================================*/
 const newSaleForm = (req, res) => {
+  let referrer = req.get('Referrer')
   let customers = []
   let employees = []
   let today = new Date().toLocaleDateString('en-CA')
@@ -82,6 +81,7 @@ const newSaleForm = (req, res) => {
           selectedEmployee,
           employees,
           pageTitle: 'New Sale',
+          referrer,
           today,
           addNew: false,
           currentEmployee: req.session.currentEmployee._id
@@ -115,7 +115,7 @@ const newSale = (req, res) => {
             .then((employee) => {})
           Customers.findByIdAndUpdate(newSale.customer.id, {$push: {sales: newSale.id}})
           .then((customer) => {})
-          res.redirect(baseURL)
+          res.redirect("/customers/" + newSale.customer.id)
         })
     })
 }
@@ -139,6 +139,7 @@ const editSaleForm = (req, res) => {
           .then((sale) => {
             res.render(('Sales/editSale.ejs'), 
             {
+              saleDate: sale.date.toLocaleDateString('en-CA'),
               sale, 
               customers,
               employees,
@@ -152,12 +153,52 @@ const editSaleForm = (req, res) => {
       })
   }
 
-const editSale = (req, res) => {
-  Sales.findByIdAndUpdate(req.params.id, {$set: req.body}, {new:true})
-    .then((updatedSale) => {
-      res.redirect(baseURL + '/' + req.params.id)
-    })
-}
+  const editSale = (req, res) => {
+    let sale = req.body
+    let originalSale = {}
+    let originalCustomerID
+    let originalEmployeeID
+    let updatedSale = {}
+    Promise.all([
+      Sales.findById(req.params.id)
+      .then((res) => {
+        originalSale = res
+        originalCustomerID = res.customer.id
+        originalEmployeeID = res.employee.id
+      }),
+      Customers.findById(req.body.customer, {name: 1, _id: 0})
+      .then((res) => {
+        customerName = res
+      }),
+      Employees.findById(req.body.employee, {firstName: 1,lastName: 1, _id: 0})
+      .then((res) => {
+        employeeName = res
+      })]).then(() => {
+        sale.customer = {
+          name: customerName.name, 
+          id: sale.customer,
+        }
+        sale.employee = {
+          name: employeeName.firstName + ' ' + employeeName.lastName, 
+          id: sale.employee,
+        }
+        Promise.all([
+          Customers.findByIdAndUpdate(originalCustomerID,{$pull: {sales: originalSale.id}}),
+          Employees.findByIdAndUpdate(originalEmployeeID,{$pull: {sales: originalSale.id}}),
+          Sales.findByIdAndUpdate(req.params.id, {$set: sale}, {new:true})
+          .then((res) => {
+           updatedSale = res
+          })
+        ]).then(() => {
+          Employees.findByIdAndUpdate(updatedSale.employee.id, {$push: {sales: updatedSale.id}})
+          .then((employee) => {})
+          Customers.findByIdAndUpdate(updatedSale.customer.id, {$push: {sales: updatedSale.id}})
+          .then((customer) => {})
+          res.redirect("/customers/" + updatedSale.customer.id)
+        })
+      })
+  }
+
 
 /*===============================================
 DELETE SALE
@@ -171,7 +212,7 @@ const deleteSale = (req, res) => {
     customerID = deletedSale.customer.id
     employeeID = deletedSale.employee.id
     saleID = deletedSale._id
-    res.redirect(baseURL)
+    res.redirect("/customers/" + deletedSale.customer.id)
     })
     .then(() => {
       Customers.findByIdAndUpdate({customerID},{$pull: {sales: saleID}})

@@ -3,25 +3,31 @@
   <form action = "<%= baseURL %>/<%= sale.id %>?_method=PUT" method="POST">
     <div class="form-outline mb-4">
       <label class="form-label" for="date">Date</label>
-      <input class="form-control" type="date" name = "date" value = "<%= sale.date %>"/>
+      <input class="form-control" type="date" name = "date" value = "<%= saleDate %>"/>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="customer">Customer</label>
-      <input class="form-control" list="customers" name="customer" value = "<%= sale.customer.name %>"/>
-      <datalist id = "customers">
+      <select class = "form-select" name="customer">
         <% for (customer of customers) { %>
-          <option value = "<%= customer.name %>">
+          <% if (customer.id == sale.customer.id) { %>
+            <option selected value = "<%= customer.id %>"> <%= customer.name %> </option>
+            <% } else { %>
+          <option value = "<%= customer.id %>"> <%= customer.name %> </option>
+          <% } %>
         <% } %>
-      </datalist>
+      </select>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="employee">Sales Person</label>
-      <input class="form-control" list="employees" name="employee" value = "<%= sale.employee.name %>"/>
-      <datalist id = "employees">
+      <select class = "form-select" name="employee">
         <% for (employee of employees) { %>
-          <option value = "<%= employee.firstName %> <%= employee.lastName %>">
+          <% if (employee.id  ==  sale.employee.id) { %>
+            <option selected value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+            <% } else { %>
+            <option value = "<%= employee.id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+            <% } %>
         <% } %>
-      </datalist>
+      </select>
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="amount">Amount</label>
