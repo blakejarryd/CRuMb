@@ -104,11 +104,11 @@ a:hover, .page-link:hover {
   align-items: center;
   flex-basis: auto;
   padding: 6px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-.col .col-3, .col-2, .col-4 {
-  overflow-x: hidden;
+.col, .col-3, .col-2, .col-4 {
+  overflow: hidden;
 }
 
 .table-row-small {
@@ -117,6 +117,7 @@ a:hover, .page-link:hover {
   align-items: center;
   flex-basis: auto;
   padding: 4px;
+  overflow: hidden;
 }
 
 .table-row:hover {
@@ -134,6 +135,7 @@ a:hover, .page-link:hover {
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.3);
   position: relative;
+  overflow: hidden;
 }
 
 h5 {
