@@ -39,7 +39,7 @@ li {
 
 .col {
   margin-left: 4px;
-  margin-right: 4px
+  margin-right: 4px;
 }
 
 
@@ -104,6 +104,11 @@ a:hover, .page-link:hover {
   align-items: center;
   flex-basis: auto;
   padding: 6px;
+  overflow-x: hidden;
+}
+
+.col .col-3, .col-2, .col-4 {
+  overflow-x: hidden;
 }
 
 .table-row-small {
