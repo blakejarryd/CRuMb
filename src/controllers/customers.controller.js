@@ -76,7 +76,7 @@ const newCustomerForm = (req, res) => {
 const newCustomer = (req, res) => {
   Customers.create(req.body)
     .then((newCustomer) => {
-      res.redirect(baseURL)
+      res.redirect(baseURL + '/' + newCustomer.id)
     })
 }
 
