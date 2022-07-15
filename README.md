@@ -23,6 +23,54 @@ A sale is related to the customer for which the sale was to. As well as the empl
 
 This relational data is then used to show analytical metrics on both the customer and employee details page based on the sales records they are linked too. 
 
+## Routes
+The application is built following a RESTful API structure.
+
+**Root**
+| HTTP Method | Route | Description |
+| ----------- | ----- | ----------- |
+| GET | / | Home Page |
+
+**Session**
+| HTTP Method | Route | Description |
+| ----------- | ----- | ----------- |
+| GET | /login | Login page |
+| POST | /login | Submit login |
+| DELETE | /logout | Delete session |
+
+**Customers**
+| HTTP Method | Route | Description |
+| ----------- | ----- | ----------- |
+| GET | /customers | Users index page |
+| GET | /customers/new | Create new user page |
+| POST | /customers | Create new user |
+| GET | /customers/:id | User details page |
+| GET | /customers/:id/edit | Edit user page |
+| PUT | /customers/:id | Edit user |
+| DELETE | /customers/:id | Delete user |
+
+**Employees**
+| HTTP Method | Route | Description |
+| ----------- | ----- | ----------- |
+| GET | /employees | Employees index page |
+| GET | /employees/new | Create new employee page |
+| POST | /employees | Create new employee |
+| GET | /employees/:id | Employee details page |
+| GET | /employees/:id/edit | Edit employee page |
+| PUT | /employees/:id | Edit employee |
+| DELETE | /employees/:id | Delete employee |
+
+**Sales**
+| HTTP Method | Route | Description |
+| ----------- | ----- | ----------- |
+| GET | /sales | Sales index page |
+| GET | /sales/new | Create new sale page |
+| POST | /sales | Create new sale |
+| GET | /sales/:id | Sale details page |
+| GET | /sales/:id/edit | Edit sale page |
+| PUT | /sales/:id | Edit sale |
+| DELETE | /sales/:id | Delete sale |
+
 ## Notable Features
 
 1. The new sales form ("/sales/new") uses smart defaults depending on the point of entry. 
