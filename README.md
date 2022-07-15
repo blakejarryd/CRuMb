@@ -19,7 +19,7 @@ The application is built around three core data models
 - Employees
 - Sales
 
-A sale is related the customer for which the sale was to. As well as the employee that made the sale.
+A sale is related to the customer for which the sale was to. As well as the employee that made the sale.
 
 This relational data is then used to show analytical metrics on both the customer and employee details page based on the sales records they are linked too. 
 
